@@ -18,8 +18,8 @@
             'title'=>$tennv,
             'email'=>$email,
             'ngay_sinh'=>$ngay_sinh,
-            'nagy_vao'=>$ngay_vao,
-            'trinh_trang'=>$tinh_trang
+            'ngay_vao'=>$ngay_vao,
+            'tinh_trang'=>$tinh_trang
         );
     array_push($nhan_vien_array['data'],$nhan_vien_item);
     }

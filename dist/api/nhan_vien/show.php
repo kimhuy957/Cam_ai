@@ -14,8 +14,8 @@
             'title'=>$nhan_vien->tennv,
             'email'=>$nhan_vien->email,
             'ngay_sinh'=>$nhan_vien->ngay_sinh,
-            'nagy_vao'=>$nhan_vien->ngay_vao,
-            'trinh_trang'=>$nhan_vien->tinh_trang
+            'ngay_vao'=>$nhan_vien->ngay_vao,
+            'tinh_trang'=>$nhan_vien->tinh_trang
     );
     echo print_r($nhan_vien_item);
 ?>

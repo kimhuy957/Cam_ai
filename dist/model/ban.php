@@ -1,10 +1,10 @@
 <?php
-    class thuoc{
+    class ban{
         private $conn;
 
-        public $id;
-        public $mnv;
-        public $mp;
+        public $mb;
+        public $ten_ban;
+        public $level;
         
         //connect db
         public function __construct($db)
@@ -13,41 +13,27 @@
         }
         public function read(){
             // include_once ('../config/db.php');
-            $query="SELECT * from thuoc order by mp desc";
+            $query="SELECT * from ban order by ten_ban desc";
             $stmt=mysqli_query($this->conn,$query);
             return $stmt;
         }
         //show data
-        public function show($id){
+        public function show($mb){
             // include_once ('../config/db.php');
-            $query="SELECT * from thuoc where id=$id LIMIT 1";
+            $query="SELECT * from ban where mb=$mb LIMIT 1";
             $stmt=mysqli_query($this->conn,$query);
             while($row=mysqli_fetch_assoc($stmt)){
-                $this->id=$row['id'];
-               $this->mp=$row['mp'];
-               $this->mnv=$row['mnv'];
+                $this->mb=$row['mb'];
+               $this->ten_ban=$row['ten_ban'];
+               $this->level=$row['level'];
             }
 
         }
         //create data
-        public function create($mnv,$mp){
-            $query="INSERT INTO `quanly`.`thuoc` 
-            ( `mnv`,`mp`) 
-            VALUES ('$mnv',$mp,)";
-              $stmt = mysqli_prepare($this->conn, $query);
-            // mysqli_stmt_bind_param($stmt, "sis", $name, $age, $mp);
-            
-             if(mysqli_stmt_execute($stmt)){
-                return true;
-             }
-             else{
-                printf("Error %s.\n");
-                return false;
-             }
-        }
-        public function update($id,$mnv,$mp){
-            $query="UPDATE `quanly`.`thuoc` SET `$mnv`='$mnv',`mp`=$mp
-            where id=$id";
+        public function create($level,$ten_ban){
+            $query="INSERT INTO `quanly`.`ban` 
+            ( `level`,`ten_ban`) 
+            VALUES ('$level',$ten_ban,)";
               $stmt = mysqli_prepare($this->conn, $query);
              if(mysqli_stmt_execute($stmt)){
                 return true;
@@ -57,8 +43,20 @@
                 return false;
              }
         }
-        public function delete($id){
-            $query="DELETE FROM thuoc WHERE id=$id";
+        public function update($mb,$level,$ten_ban){
+            $query="UPDATE `quanly`.`ban` SET `$level`='$level',`ten_ban`=$ten_ban
+            where mb=$mb";
+              $stmt = mysqli_prepare($this->conn, $query);
+             if(mysqli_stmt_execute($stmt)){
+                return true;
+             }
+             else{
+                printf("Error %s.\n");
+                return false;
+             }
+        }
+        public function delete($mb){
+            $query="DELETE FROM ban WHERE mb=$mb";
               $stmt = mysqli_prepare($this->conn, $query);
              if(mysqli_stmt_execute($stmt)){
                 return true;
@@ -69,4 +67,4 @@
              }
         }        
     }
-?>zzzzZAs
+?>
