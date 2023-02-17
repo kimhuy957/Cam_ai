@@ -1,0 +1,25 @@
+.tong{
+    display: flex;
+    width: 100%;
+}
+.tong .cong_ty{
+    width: 20%;
+}
+.tong .phong{
+    height: 80%;
+}
+.phong iframe{
+    width: 100%;
+}
+a{
+color: rgb(31, 27, 27);
+text-decoration: none;
+}
+a:hover{
+    cursor: pointer;
+    padding: 10px;
+    background-color: gray;
+}
+ul,ol{
+    list-style-type: none;
+}
