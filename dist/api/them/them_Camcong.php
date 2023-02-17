@@ -43,7 +43,8 @@ if ($conn->query($sql) === TRUE) {
 // Gửi dữ liệu tới API
 $data = array(
 'Time_den'=>$Time_den,
-'Time_ve'=>$Time_ve
+'Time_ve'=>$Time_ve,
+'id_phongban'=>$_GET['id']
 );
 
 $curl = curl_init();

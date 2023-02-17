@@ -25,14 +25,15 @@ if ($conn->query($sql) === TRUE) {
 }
 
 // Gửi dữ liệu tới API
+$n='';
 $data = array(
-'ten_ban'=>$ten,
+'ten_ban'=>$n,
 );
 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://huma_new.test:8081/dist/api/them/them_phong.php",
+  CURLOPT_URL => "http://huma_new.test:8081/dist/api/them/them_ban.php",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
