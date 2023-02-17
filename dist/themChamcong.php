@@ -341,24 +341,20 @@
                                 }
                                 else{
                                     $k=$hien["ten_ban"];
-                                    echo "
-                                    <ul class='card-body'>";
-                                    $sql3=mysqli_query($conn," SELECT p.ten_phong, p.mp From phong as p left join ban as b on b.mb=p.m_ban where b.mb=".$hien['mb']."");
-                                    echo "<li class='sidebar-menu-item'><a href='?mb=".$hien['mb']."&mp='''>
-                                    <span class='sidebar-menu-text'>".$hien["ten_ban"]."</span>
-                                    </a></li>";  
-                                    while($hien1=mysqli_fetch_assoc($sql3)){
-                                        // if($hien['mb']==$hien1['m_ban'])
-                                        echo "<li class='sidebar-menu-item'><a href='?mb=".$hien['mb']."&mp=".$hien1['mp']."'>
-                                        <span class='sidebar-menu-text'>".$hien1['ten_phong']."</span>
-                                        </a></li>";
-
-                                    }
-                                   echo "</ul>
-                                    ";
                                 }
                                     echo '<span class="sidebar-menu-text">'.$k.'</span>';
                                 echo"</a>";
+
+                                $sql3=mysqli_query($conn," SELECT p.ten_phong, p.mp From phong as p left join ban as b on b.mb=p.m_ban where b.mb=".$hien['mb']."");
+                                echo" <ul class='card-body'>";
+                                while($hien1=mysqli_fetch_assoc($sql3)){
+                                    // if($hien['mb']==$hien1['m_ban'])
+                                    echo "<li class='sidebar-menu-item'><a href='?mb=".$hien['mb']."&mp=".$hien1['mp']."'>
+                                    <span class='sidebar-menu-text'>&nbsp&nbsp&nbsp ".$hien1['ten_phong']."</span>
+                                    </a></li>";
+                                    
+                                }
+                                echo"</ul>";  
                     echo' </li>';
             }}
             ?>
@@ -428,7 +424,34 @@
                                class="sort"
                                data-sort="js-lists-values-employer-name">Mã Nhân Viên</a>
                         </th>
-                        
+                        <th>
+                            <a href="javascript:void(0)"
+                               class="sort"
+                               data-sort="js-lists-values-employee-name">Ngày Sinh</a>
+                        </th>
+
+
+                        <th class="text-center"
+                            style="width: 48px;">
+                            <a href="javascript:void(0)"
+                               class="sort"
+                               data-sort="js-lists-values-projects">Ngày vào</a>
+                        </th>
+
+                        <th style="width: 37px;">Vai trò</th>
+
+                        <!-- <th style="width: 120px;">
+                            <a href="javascript:void(0)"
+                               class="sort"
+                               data-sort="js-lists-values-activity">Activity</a>
+                        </th>-->
+                        <th style="width: 51px;">
+                            <a href="javascript:void(0)"
+                               class="sort"
+                               data-sort="js-lists-values-earnings">Tình trạng</a>
+                        </th> 
+                        <th style="width: 24px;"
+                            class="pl-0"></th>
                     </tr>
                 </thead>
                 <tbody class="list"
@@ -480,19 +503,49 @@
                                         <div class="media-body">
 
                                             <div class="d-flex flex-column ">
-                                                <a href="account.php?mnv='.$hien['mnv'].'">
-                                                <p class="mb-0"><strong class="js-lists-values-employee-name"><u>'.$hien['tennv'].'</u></strong></p>
+                                                <a href="ghicong.php?id='.$hien['id'].'">
+                                                <p class="mb-0"><strong class="js-lists-values-employee-name">'.$hien['tennv'].'</strong></p>
                                                 <small class="js-lists-values-employee-email text-50">'.$hien['email'].'</small>
                                                 </a>
                                                 </div>
 
                                         </div>
-                                        <div>
-                                        
-                                        </div>
                                     </div>
 
                                 </td>
+
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                           <span class="js-lists-values-employer-name text-70">'.$hien['ngay_sinh'].'</span>
+                                    </div>
+                                </td>
+
+                                <td class="text-center js-lists-values-projects small text-70">'.$hien['ngay_vao'].'</td>
+
+                                <td>
+
+                                    <a href=""
+                                       class="chip chip-outline-secondary">'.$hien['vai_tro'].'</a>
+
+                                </td>
+                                <td>
+                                <div class="text-center js-lists-values-projects small text-70">';
+                                    if(ucwords($hien['tinh_trang'])=="Đang Làm"){
+                                        echo '
+                                        <span style="color:green">'.$hien['tinh_trang'].'</span>
+                                        ';
+                                    }
+                                    elseif(ucwords($hien['tinh_trang'])=="Đã Nghỉ"){
+                                        echo '
+                                        <span style="color:red;">'.$hien['tinh_trang'].'</span>
+                                        ';
+                                    }
+                                    else{
+                                        echo '
+                                        <span style="color:blue;">'.$hien['tinh_trang'].'</span>
+                                        ';
+                                    }
+                           echo'</div></td>
                             </tr>
                             ';
                         }

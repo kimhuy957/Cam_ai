@@ -7,44 +7,49 @@ include "../../config/function.php";
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-//lấy thơi gian
-// Lấy dữ liệu từ form
-$time_di=$_POST["time_den"];
-$time_ve=$_POST["time_ve"];
-$tinh_trang='';
 
+// Lấy dữ liệu từ form
+$Time_den=$_POST["Time_den"];
+$Time_ve=$_POST["Time_ve"];
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-$dateday=date('d');
-$datetime=date('H:i');
-$dateMonth=date('m');
-$dateYear=date('Y');
-$datedaysql=date('Y-m-d');
-$dateactually=date('Y-m-d');
+    $dateday=date('Y-m-d');
+//kiêm tra thơi gian
+  $n='';
+       if($Time_den<='8:00'){
+            $n="muộn";
+        
+            if($Time_den<='10:00'){
+                $n="nghỉ";
+            }
+
+        }
+        if($Time_den>='8:00'){
+            $n="đúng h";
+        }
 
 $sql = "INSERT INTO `quanly`.`lich` 
-(`id_lich`, `date`,`time_di`,`time_ve`, `tinh_trang`,`id_thuoc`) 
- VALUES (NULL ,'".$datedaysql."','".$time_di."','".$time_ve."','okmla','".$_GET['id_thuoc']."')";
+(`date`, `time_di`, `time_ve`, `tinh_trang`, `id_thuoc`) 
+VALUES ('".$dateday."', '".$Time_den."', '".$Time_ve."', '".$n."', '".$_GET['id']."');";
                                             
 
 if ($conn->query($sql) === TRUE) {
-    echo "Câm công thành công";
-    header("http://huma_new.test:8081/dist/date.php");
+    echo "lưu thành công";
+    header("http://huma_new.test:8081/dist/them_phong.php");
 
 } else {
-  echo "Error: " . $sql . "<br>" . $conn->error; 
+  echo "Error: " . $sql . "<br>" .$conn->error; 
 }
 
 // Gửi dữ liệu tới API
 $data = array(
-'time_den'=>$time_di,
-'time_ve'=>$time_ve,
-'id_thuoc'=>$_GET['id_thuoc']
+'Time_den'=>$Time_den,
+'Time_ve'=>$Time_ve
 );
 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://huma_new.test:8081/dist/api/them/them_Camcong.php",
+  CURLOPT_URL => "http://huma_new.test:8081/dist/api/them/them_phong.php",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,

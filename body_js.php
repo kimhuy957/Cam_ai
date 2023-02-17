@@ -242,6 +242,11 @@
                                             <span class="sidebar-menu-text">thêm nhân viên</span>
                                         </a>
                                     </li>
+                                    <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button" href="themChamcong.php?mb=''&mp=''">
+                                            <span class="sidebar-menu-text">thêm Chấm Công</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- <li class="sidebar-menu-item">
