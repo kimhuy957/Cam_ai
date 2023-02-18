@@ -16,7 +16,8 @@ $nhan_vien->email=$data->email;
 $nhan_vien->ngay_sinh=$data->ngay_sinh;
 $nhan_vien->ngay_vao=$data->ngay_vao;
 $nhan_vien->tinh_trang=$data->tinh_trang;
-if($nhan_vien->update($data->mnv,$data->tennv,$data->email,$data->ngay_sinh,$data->ngay_vao,$data->tinh_trang)){
+$nhan_vien->tinh_trang=$data->vai_tro;
+if($nhan_vien->update($data->mnv,$data->tennv,$data->email,$data->ngay_sinh,$data->ngay_vao,$data->tinh_trang,$data->vai_tro)){
     echo json_encode(array('message','Question Update'));
 }
 else{

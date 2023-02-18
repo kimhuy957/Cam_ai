@@ -28,8 +28,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         }
 
 $sql = "INSERT INTO `quanly`.`lich` 
-(`date`, `time_di`, `time_ve`, `tinh_trang`, `id_thuoc`) 
-VALUES ('".$dateday."', '".$Time_den."', '".$Time_ve."', '".$n."', '".$_GET['id']."');";
+(`id_lich`,`date`, `time_di`, `time_ve`, `tinh_trang`, `id_thuoc`) 
+VALUES (null,'".$dateday."', '".$Time_den."', '".$Time_ve."', '".$n."', '".$_GET['id']."');";
                                             
 
 if ($conn->query($sql) === TRUE) {

@@ -19,4 +19,5 @@ if($ban->update($data->mb,$data->ten_ban,$data->level)){
 else{
     echo json_encode(array('message','Question Not Update'));
 }
+
 ?>

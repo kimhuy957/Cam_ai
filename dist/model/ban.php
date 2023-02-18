@@ -30,21 +30,21 @@
 
         }
         //create data
-        public function create($level,$ten_ban){
+        public function create($mb,$ten_ban){
             $query="INSERT INTO `quanly`.`ban` 
-            ( `level`,`ten_ban`) 
-            VALUES ('$level',$ten_ban,)";
-              $stmt = mysqli_prepare($this->conn, $query);
-             if(mysqli_stmt_execute($stmt)){
-                return true;
-             }
-             else{
-                printf("Error %s.\n");
-                return false;
+            ( `mb`,`ten_ban`,`level`) 
+            VALUES ($mb,'$ten_ban',0)";
+             $stmt = mysqli_prepare($this->conn, $query);
+
+             if (mysqli_stmt_execute($stmt)) {
+                 return true;
+             } else {
+                 printf("Error %s.\n", mysqli_error($this->conn)); // Added error message to printf()
+                 return false;
              }
         }
-        public function update($mb,$level,$ten_ban){
-            $query="UPDATE `quanly`.`ban` SET `$level`='$level',`ten_ban`=$ten_ban
+        public function update($mb,$ten_ban,$level){
+            $query="UPDATE `quanly`.`ban` SET `level`='$level',`ten_ban`='$ten_ban'
             where mb=$mb";
               $stmt = mysqli_prepare($this->conn, $query);
              if(mysqli_stmt_execute($stmt)){

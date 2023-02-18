@@ -36,10 +36,10 @@
 
         }
         //create data
-        public function create($id_lich,$date,$time_di,$time_ve,$tinh_trang,$id_thuoc){
+        public function create($date,$time_di,$time_ve,$tinh_trang,$id_thuoc){
             $query="INSERT INTO `quanly`.`lich` 
             ( `id_lich`,`date`,`time_di`,`time_ve`, `tinh_trang`,`id_thuoc`) 
-            VALUES ('$date','$time_di','$time_ve','$tinh_trang',`$id_thuoc`)";
+            VALUES (NULL,'$date','$time_di','$time_ve','$tinh_trang','$id_thuoc')";
               $stmt = mysqli_prepare($this->conn, $query);
             
              if(mysqli_stmt_execute($stmt)){
