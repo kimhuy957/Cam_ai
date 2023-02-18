@@ -1,0 +1,1081 @@
+{
+	"info": {
+		"_postman_id": "f8cc94a8-9df5-4905-941e-be35c0d049e8",
+		"name": "Cam_ai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25535755"
+	},
+	"item": [
+		{
+			"name": "Cam_ai",
+			"item": [
+				{
+					"name": "dist",
+					"item": [
+						{
+							"name": "api",
+							"item": [
+								{
+									"name": "ban",
+									"item": [
+										{
+											"name": "create.php",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n   \"mb\":7,\r\n    \"ten_ban\":\"nhap7\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/ban/create.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"ban",
+														"create.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "delete.php",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"mb\":\"7\"//nhập int\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/ban/delete.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"ban",
+														"delete.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "read.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/ban/read.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"ban",
+														"read.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "show.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/ban/show.php?id=7",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"ban",
+														"show.php"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "7"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update.php",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"mb\":20,\r\n    \"ten_ban\":\"kinh doang\",\r\n    \"level\":\"1\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/ban/update.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"ban",
+														"update.php"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "nhan_vien",
+									"item": [
+										{
+											"name": "create.php",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n\"mnv\": 9,\r\n\"tennv\":\"Nguyễn văn A\",\r\n\"email\":\"ngva@gmial.com\",\r\n\"ngay_sinh\":\"2002-12-12\",\r\n\"ngay_vao\":\"2022-12-11\",\r\n\"tinh_trang\":\"Đang làm\",\r\n\"vai_tro\":\"Nhân Viên\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://huma_new.test:8081/dist/api/nhan_vien/create.php",
+													"protocol": "http",
+													"host": [
+														"huma_new",
+														"test"
+													],
+													"port": "8081",
+													"path": [
+														"dist",
+														"api",
+														"nhan_vien",
+														"create.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "delete.php",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"mnv\":\"9\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://huma_new.test:8081/dist/api/nhan_vien/delete.php?mnv=9",
+													"protocol": "http",
+													"host": [
+														"huma_new",
+														"test"
+													],
+													"port": "8081",
+													"path": [
+														"dist",
+														"api",
+														"nhan_vien",
+														"delete.php"
+													],
+													"query": [
+														{
+															"key": "mnv",
+															"value": "9"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "read.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/nhan_vien/read.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"nhan_vien",
+														"read.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "show.php",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/nhan_vien/show.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"nhan_vien",
+														"show.php"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "1",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update.php",
+											"request": {
+												"method": "PUT",
+												"header": []
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "phong",
+									"item": [
+										{
+											"name": "create.php",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"mp\":1,\r\n    \"ten_phong\":\"phòng nhân sự\",\r\n    \"m_ban\":\"2\",\r\n    \"level\":1\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/phong/create.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"phong",
+														"create.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "delete.php",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"mp\":11\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/phong/delete.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"phong",
+														"delete.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "read.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/phong/read.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"phong",
+														"read.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "show.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/phong/show.php?id=1",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"phong",
+														"show.php"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "1"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update.php",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"mp\":\"32\",\r\n    \"ten_phong\":\"phòng hành trính\",\r\n    \"m_ban\":\"1\",\r\n    \"level\":\"1\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/phong/update.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"phong",
+														"update.php"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Cam_cong",
+									"item": [
+										{
+											"name": "create.php",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"date\":\"2023-02-18\",//Y-m-d\r\n    \"time_di\":\"08:00\",//H:i\r\n    \"time_ve\":\"17:00\",//H:i\r\n    \"tinh_trang\":\"đi đúng h\",//String\r\n    \"id_thuoc\":\"13\"//int bang thuoc\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/Cam_cong/create.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"Cam_cong",
+														"create.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "delete.php",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id_lich\":\"13\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}//dist/api/Cam_cong/delete.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"",
+														"dist",
+														"api",
+														"Cam_cong",
+														"delete.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "read.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/Cam_cong/read.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"Cam_cong",
+														"read.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "show.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/Cam_cong/show.php?id=3",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"Cam_cong",
+														"show.php"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "3"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update.php",
+											"request": {
+												"method": "GET",
+												"header": []
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "them",
+									"item": [
+										{
+											"name": "nhan_vien.php",
+											"request": {
+												"method": "GET",
+												"header": []
+											},
+											"response": []
+										},
+										{
+											"name": "them_ban.php",
+											"request": {
+												"method": "GET",
+												"header": []
+											},
+											"response": []
+										},
+										{
+											"name": "them_Camcong.php",
+											"request": {
+												"method": "GET",
+												"header": []
+											},
+											"response": []
+										},
+										{
+											"name": "them_phong",
+											"request": {
+												"method": "GET",
+												"header": []
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "assets",
+							"item": []
+						},
+						{
+							"name": "config",
+							"item": [
+								{
+									"name": "db.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/config/db.php.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"config",
+												"db.php.php"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "function.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/config/function.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"config",
+												"function.php"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "sql.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/config/sql.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"config",
+												"sql.php"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "model",
+							"item": [
+								{
+									"name": "ban.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/model/ban.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"model",
+												"ban.php"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "lich.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/model/lich.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"model",
+												"lich.php"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "nhanvien.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/model/nhanvien.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"model",
+												"nhanvien.php"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "thuoc.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/model/thuoc.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"model",
+												"thuoc.php"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "phong.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/model/phong.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"model",
+												"phong.php"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "src",
+							"item": [
+								{
+									"name": "list_phong.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/src/list_phong.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"src",
+												"list_phong.php"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "phongban.php",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dist/src/phongban.php",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dist",
+												"src",
+												"phongban.php"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": ".htaccess",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "account.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/account.php?mvn=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"account.php"
+									],
+									"query": [
+										{
+											"key": "mvn",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "date.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/date.php",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"date.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ghicong.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/ghicong.php?id=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"ghicong.php"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/index.php",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"index.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "phongban.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/phongban.php?mb=3&mp=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"phongban.php"
+									],
+									"query": [
+										{
+											"key": "mb",
+											"value": "3"
+										},
+										{
+											"key": "mp",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "staff.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/staff.php",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"staff.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "them_ban.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/them_ban.php",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"them_ban.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "them_nv.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/them_nv.php",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"them_nv.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "them_phong.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/them_phong.php",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"them_phong.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "themChamcong.php",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dist/themChamcong.php?mb=1&mp=32",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dist",
+										"themChamcong.php"
+									],
+									"query": [
+										{
+											"key": "mb",
+											"value": "1"
+										},
+										{
+											"key": "mp",
+											"value": "32"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "body_js.php",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/body_js.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"body_js.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "head.php",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/head.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"head.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
