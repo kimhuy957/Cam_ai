@@ -10,31 +10,31 @@ if ($conn->connect_error) {
 
 // Lấy dữ liệu từ form
 $selected_numbers = $_POST['ban1'];
-$mnv = $_POST["mnv"];
-$ten=$_POST["ten"];
+$id = $_POST["id"];
+$user=$_POST["user"];
 $email = $_POST["email"];
-$ngay_sinh = $_POST["year"];
-$ngay_vao = $_POST["day_vao"];
-$vai_tro = $_POST["vai_tro"];
-if($vai_tro==1){
-    $vai_tro="Admin";
+$date_birth = $_POST["year"];
+$date_job_receive = $_POST["day_vao"];
+$role = $_POST["role"];
+if($role==1){
+    $role="Admin";
 }
-elseif($vai_tro==2){
-    $vai_tro="Quản lý";
+elseif($role==2){
+    $role="Quản lý";
 }
 else{
-    $vai_tro="Nhân viên";
+    $role="Nhân viên";
 }
 
 // Chèn dữ liệu vào bảng "customers"
-$sql = "INSERT INTO `quanly`.`ten` 
-(`mnv`, `tennv`,`email`,`ngay_sinh`, `ngay_vao`, `tinh_trang`,`vai_tro`) 
- VALUES ('".$mnv."', '".$ten."','".$email."','".$ngay_sinh."', '".$ngay_vao."', 'Đang Làm','".$vai_tro."')";
+$sql = "INSERT INTO `cam_ai`.`user` 
+(`id`, `fullname`,`email`,`date_birth`, `date_job_receive`, `status`,`role`) 
+ VALUES ('".$id."', '".$user."','".$email."','".$date_birth."', '".$date_job_receive."', 'Đang Làm','".$role."')";
                                             
 
 if ($conn->query($sql) === TRUE) {
     foreach ($selected_numbers as $number) {
-        $sql_thuoc="INSERT INTO thuoc(id,mnv,mp) VALUES (NULL,$mvn,$number);";    
+        $sql_thuoc="INSERT INTO belong(id,id_staff,id_room) VALUES (NULL,$id,$number);";    
         if($conn->query($sql_thuoc)===true){
              echo "lưu đã thành công<br>"; 
         } 
@@ -49,12 +49,12 @@ if ($conn->query($sql) === TRUE) {
 
 // Gửi dữ liệu tới API
 $data = array(
-'mnv'=>$mnv,
-'ten'=>$ten,
+'id'=>$id,
+'user'=>$user,
 'email'=>$email,
-'ngay_sinh'=>$ngay_sinh,
-'ngay_vao'=>$ngay_vao,
-'vai_tr'=>$vai_tro,
+'date_birth'=>$date_birth,
+'date_job_receive'=>$date_job_receive,
+'vai_tr'=>$role,
 );
 
 $curl = curl_init();

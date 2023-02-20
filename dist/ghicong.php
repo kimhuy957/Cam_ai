@@ -291,7 +291,7 @@ include 'config/function.php';?>
                                                     <div class="col-sm-9">
                                                         <input type="time"
                                                                class="form-control"
-                                                               name="Time_ve"
+                                                               name="time_out"
                                                                >
                                                     </div>
                                                 </div>

@@ -2,18 +2,18 @@
     header('Acces-Control-Allow-Origin:*');
     header('Content-Type:application/json');
     include_once('../../config/db.php');
-    include_once('../../model/phong.php');
+    include_once('../../model/room.php');
 
     $db=new db();
     $connect=$db->connect();
-    $phong=new phong($connect);
-    $phong->show($_GET['id']);
+    $room=new room($connect);
+    $room->show($_GET['id']);
     $phong_item=array(
 
-            'mp'=>$phong->mp,
-            'ten_phong'=>$phong->ten_phong,
-            'm_ban'=>$phong->m_ban,
-            'level'=>$phong->level
+            'id'=>$room->mp,
+            'name_room'=>$room->name_room,
+            'id_company'=>$room->id_company,
+            'level'=>$room->level
     );
     echo print_r($phong_item);
 ?>

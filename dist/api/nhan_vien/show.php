@@ -10,12 +10,12 @@
     $nhan_vien->show($_GET['id']);
     $nhan_vien_item=array(
 
-            'mnv'=>$nhan_vien->mnv,
-            'title'=>$nhan_vien->tennv,
+            'id'=>$nhan_vien->id,
+            'title'=>$nhan_vien->fullname,
             'email'=>$nhan_vien->email,
-            'ngay_sinh'=>$nhan_vien->ngay_sinh,
-            'ngay_vao'=>$nhan_vien->ngay_vao,
-            'tinh_trang'=>$nhan_vien->tinh_trang
+            'date_birth'=>$nhan_vien->date_birth,
+            'date_job_receive'=>$nhan_vien->date_job_receive,
+            'status'=>$nhan_vien->status
     );
     echo print_r($nhan_vien_item);
 ?>

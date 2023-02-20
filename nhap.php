@@ -3,10 +3,10 @@ include "dist/config/sql.php";
 include 'dist/config/function.php';
 
 // Tạo một mảng chứa 100 dòng
-$sql =mysqli_query($conn,"SELECT * from ten");
+$sql =mysqli_query($conn,"SELECT * from user");
 $i=1;
 while($hien=mysqli_fetch_assoc($sql)){
-    $line=array($i=>array($hien['mnv'],$hien['tennv'],$hien['email'],$hien['ngay_sinh'],$hien['ngay_vao'],$hien['tinh_trang'],$hien['vai_tro']));
+    $line=array($i=>array($hien['id'],$hien['fullname'],$hien['email'],$hien['date_birth'],$hien['date_job_receive'],$hien['status'],$hien['role']));
     $i++;
 }
 echo '<pre>';
@@ -14,7 +14,7 @@ print_r($line);
 print_r(mysqli_fetch_assoc($sql));
 echo '</pre>';
 // Thực hiện truy vấn SQL
-$result = mysqli_query($conn, "SELECT * FROM ten");
+$result = mysqli_query($conn, "SELECT * FROM user");
 
 // Tạo mảng để lưu kết quả truy vấn
 $data = array();

@@ -324,14 +324,14 @@
       <div class="col-md-2 col-sm-auto card " id="phong1">
         <ul class="card-body">
             <?php
-            $sql3=mysqli_query($conn," SELECT p.ten_phong, p.mp From phong as p left join ban as b on b.mb=p.m_ban where b.mb=".$_GET['mb']."");
-            echo "<li class='sidebar-menu-item'><a href='?mb=".$_GET['mb']."&mp='''>
+            $sql3=mysqli_query($conn," SELECT p.name_room, p.id From room as p left join company as b on b.id=p.id_company where b.id=".$_GET['mb']."");
+            echo "<li class='sidebar-menu-item'><a href='?mb=".$_GET['mb']."&id='''>
             <span class='sidebar-menu-text'>Tất Cả</span>
             </a></li>";  
             while($hien1=mysqli_fetch_assoc($sql3)){
-                // if($hien['mb']==$hien1['m_ban'])
-                echo "<li class='sidebar-menu-item'><a href='?mb=".$_GET['mb']."&mp=".$hien1['mp']."'>
-                <span class='sidebar-menu-text'>".$hien1['ten_phong']."</span>
+                // if($hien['id']==$hien1['id_company'])
+                echo "<li class='sidebar-menu-item'><a href='?mb=".$_GET['mb']."&id=".$hien1['id']."'>
+                <span class='sidebar-menu-text'>".$hien1['name_room']."</span>
                 </a></li>";
 
             }
@@ -436,27 +436,27 @@
                        id="staff">
                     <?php
                     $sql='';
-                    if($_GET["mp"]==""){
-                        $sql=mysqli_query($conn,"SELECT * From ten 
-                        left join thuoc as t on ten.mnv=t.mnv 
-                        left join phong as p on t.mp=p.mp
-                        left join ban   as b on b.mb=p.m_ban
-                        where b.mb=".$_GET['mb']."");
+                    if($_GET["id"]==""){
+                        $sql=mysqli_query($conn,"SELECT * From user 
+                        left join belong as t on user.id=t.id 
+                        left join room as p on t.id_room=p.id
+                        left join company   as b on b.id=p.id_company
+                        where b.id=".$_GET['mb']."");
                     }
                     else{
-                        $sql=mysqli_query($conn,"SELECT * From ten 
-                        left join thuoc as t on ten.mnv=t.mnv 
-                        left join phong as p on t.mp=p.mp
-                        left join ban   as b on b.mb=p.m_ban
-                        where b.mb=".$_GET['mb']." AND t.mp=".$_GET['mp']."");
+                        $sql=mysqli_query($conn,"SELECT * From user 
+                        left join belong as t on user.id=t.id_staff 
+                        left join room as p on t.id_room=p.id
+                        left join company   as b on b.id=p.id_company
+                        where b.id=".$_GET['mb']." AND t.id_room=".$_GET['id']."");
                     }
-                        // $sql=mysqli_query($conn,"SELECT * From ten 
-                        // left join thuoc as t on ten.mnv=t.mnv 
-                        // left join phong as p on t.mp=p.mp
-                        // left join ban   as b on b.mb=p.m_ban
-                        // where b.mb=".$_GET['mb']."");
+                        // $sql=mysqli_query($conn,"SELECT * From user 
+                        // left join belong as t on user.id=t.id 
+                        // left join room as p on t.mp=p.mp
+                        // left join company   as b on b.id=p.id_company
+                        // where b.id=".$_GET['mb']."");
                         while($hien=mysqli_fetch_assoc($sql)){
-                            $logo=substr("".$hien['tennv']."",0,1);
+                            $logo=substr("".$hien['fullname']."",0,1);
                             echo'
                             <tr>
 
@@ -481,8 +481,8 @@
                                         <div class="media-body">
 
                                             <div class="d-flex flex-column ">
-                                                <a href="account.php?mnv='.$hien['mnv'].'">
-                                                <p class="mb-0"><strong class="js-lists-values-employee-name">'.$hien['tennv'].'</strong></p>
+                                                <a href="account.php?id='.$hien['id'].'">
+                                                <p class="mb-0"><strong class="js-lists-values-employee-name">'.$hien['fullname'].'</strong></p>
                                                 <small class="js-lists-values-employee-email text-50">'.$hien['email'].'</small>
                                                 </a>
                                                 </div>
@@ -494,33 +494,33 @@
 
                                 <td>
                                     <div class="d-flex align-items-center">
-                                           <span class="js-lists-values-employer-name text-70">'.$hien['ngay_sinh'].'</span>
+                                           <span class="js-lists-values-employer-name text-70">'.$hien['date_birth'].'</span>
                                     </div>
                                 </td>
 
-                                <td class="text-center js-lists-values-projects small text-70">'.$hien['ngay_vao'].'</td>
+                                <td class="text-center js-lists-values-projects small text-70">'.$hien['date_job_receive'].'</td>
 
                                 <td>
 
                                     <a href=""
-                                       class="chip chip-outline-secondary">'.$hien['vai_tro'].'</a>
+                                       class="chip chip-outline-secondary">'.$hien['role'].'</a>
 
                                 </td>
                                 <td>
                                 <div class="text-center js-lists-values-projects small text-70">';
-                                    if(ucwords($hien['tinh_trang'])=="Đang Làm"){
+                                    if(ucwords($hien['status'])=="Đang Làm"){
                                         echo '
-                                        <span style="color:green">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:green">'.$hien['status'].'</span>
                                         ';
                                     }
-                                    elseif(ucwords($hien['tinh_trang'])=="Đã Nghỉ"){
+                                    elseif(ucwords($hien['status'])=="Đã Nghỉ"){
                                         echo '
-                                        <span style="color:red;">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:red;">'.$hien['status'].'</span>
                                         ';
                                     }
                                     else{
                                         echo '
-                                        <span style="color:blue;">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:blue;">'.$hien['status'].'</span>
                                         ';
                                     }
                            echo'</div></td>

@@ -4,20 +4,20 @@ header('Content-Type:application/json');
 header('Acces-Control-Allow-Methods: PUT');
 header('Acces-Control-Allow-Headers:Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With');
 include_once('../../config/db.php');
-include_once('../../model/room.php');
+include_once('../../model/belong.php');
 
 $db=new db();
 $connect=$db->connect();
-$room=new room($connect);
+$belong=new belong($connect);
 $data=json_decode(file_get_contents("php://input"));
-$room->mp=$data->mp;
-$room->name_room=$data->name_room;
-$room->id_company=$data->id_company;
-$room->level=$data->level;
-if($room->update($data->mp,$data->name_room,$data->id_company,$data->level)){
+$belong->id=$data->id;
+$belong->id_room=$data->id_room;
+$belong->id_staff=$data->id_staff;
+if($belong->update($data->id,$data->id_room,$data->id_staff)){
     echo json_encode(array('message','Question Update'));
 }
 else{
     echo json_encode(array('message','Question Not Update'));
 }
+
 ?>

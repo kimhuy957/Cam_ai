@@ -6,13 +6,13 @@ include "config/function.php";
 <select name='ban1[]' multiple   data-toggle="select"
 class="form-control form-control-lg" >
 <?php 
-    $sql=mysqli_query($conn,ban());
+    $sql=mysqli_query($conn,company());
     while($hien=mysqli_fetch_assoc($sql)){
-        $sql1=mysqli_query($conn,phong().' where m_ban='.$hien['mb'].'');
+        $sql1=mysqli_query($conn,room().' where id_company='.$hien['id'].'');
         echo"
-        <optgroup label=".$hien['ten_ban'].">";
+        <optgroup label=".$hien['name_company'].">";
         while($hien1=mysqli_fetch_assoc($sql1)){
-        echo "<option value='".$hien1['mp']."'>".$hien1['ten_phong']."</option>";
+        echo "<option value='".$hien1['id']."'>".$hien1['name_room']."</option>";
         }
         echo"
         </optgroup>

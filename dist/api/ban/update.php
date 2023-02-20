@@ -4,16 +4,16 @@ header('Content-Type:application/json');
 header('Acces-Control-Allow-Methods: PUT');
 header('Acces-Control-Allow-Headers:Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With');
 include_once('../../config/db.php');
-include_once('../../model/ban.php');
+include_once('../../model/company.php');
 
 $db=new db();
 $connect=$db->connect();
-$ban=new ban($connect);
+$company=new company($connect);
 $data=json_decode(file_get_contents("php://input"));
-$ban->mb=$data->mb;
-$ban->ten_ban=$data->ten_ban;
-$ban->level=$data->level;
-if($ban->update($data->mb,$data->ten_ban,$data->level)){
+$company->mb=$data->mb;
+$company->name_company=$data->name_company;
+$company->level=$data->level;
+if($company->update($data->mb,$data->name_company,$data->level)){
     echo json_encode(array('message','Question Update'));
 }
 else{

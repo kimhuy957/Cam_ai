@@ -10,9 +10,9 @@ $db=new db();
 $connect=$db->connect();
 $nhan_vien=new nhanvien($connect);
 $data=json_decode(file_get_contents("php://input"));
-$nhan_vien->mnv=$data->mnv;
+$nhan_vien->id=$data->id;
 
-if($nhan_vien->delete($data->mnv)){
+if($nhan_vien->delete($data->id)){
     echo json_encode(array('message','Question DELETE'));
 }
 else{

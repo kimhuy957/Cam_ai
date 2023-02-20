@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 
 // Lấy dữ liệu từ form
 $Time_den=$_POST["Time_den"];
-$Time_ve=$_POST["Time_ve"];
+$time_out=$_POST["time_out"];
 date_default_timezone_set('Asia/Ho_Chi_Minh');
     $dateday=date('Y-m-d');
 //kiêm tra thơi gian
@@ -27,9 +27,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             $n="đúng h";
         }
 
-$sql = "INSERT INTO `quanly`.`lich` 
-(`id_lich`,`date`, `time_di`, `time_ve`, `tinh_trang`, `id_thuoc`) 
-VALUES (null,'".$dateday."', '".$Time_den."', '".$Time_ve."', '".$n."', '".$_GET['id']."');";
+$sql = "INSERT INTO `cam_ai`.`timekeeping` 
+(`id`,`date`, `time_now`, `time_out`, `status`, `id_belong`) 
+VALUES (null,'".$dateday."', '".$Time_den."', '".$time_out."', '".$n."', '".$_GET['id']."');";
                                             
 
 if ($conn->query($sql) === TRUE) {
@@ -43,7 +43,7 @@ if ($conn->query($sql) === TRUE) {
 // Gửi dữ liệu tới API
 $data = array(
 'Time_den'=>$Time_den,
-'Time_ve'=>$Time_ve,
+'time_out'=>$time_out,
 'id_phongban'=>$_GET['id']
 );
 

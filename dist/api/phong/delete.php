@@ -5,15 +5,15 @@ header('Access-Control-Allow-Methods: DELETE');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
 include_once('../../config/db.php');
-include_once('../../model/phong.php');
+include_once('../../model/room.php');
 
 $db=new db();
 $connect=$db->connect();
-$phong=new phong($connect);
+$room=new room($connect);
 $data=json_decode(file_get_contents("php://input"));
-$phong->mp=$data->mp;
+$room->mp=$data->mp;
 
-if($phong->delete($data->mp)){
+if($room->delete($data->mp)){
     echo json_encode(array('message','Question DELETE'));
 }
 else{

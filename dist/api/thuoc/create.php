@@ -5,15 +5,16 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
 include_once('../../config/db.php');
-include_once('../../model/company.php');
+include_once('../../model/belong.php');
 
 $db=new db();
 $connect=$db->connect();
-$company=new company($connect);
+$belong=new belong($connect);
 $data=json_decode(file_get_contents("php://input"));
-$company->mb=$data->mb;
-$company->name_company=$data->name_company;
-if($company->create($data->mb,$data->name_company)){
+// $belong->id=$data->id;
+$belong->id_staff=$data->id_staff;
+$belong->id_room=$data->id_room;
+if($belong->create($data->id_staff,$id->id_room)){
     echo json_encode(array('message','Question Created'));
 }
 else{

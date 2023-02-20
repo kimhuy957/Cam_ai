@@ -2,17 +2,17 @@
     header('Acces-Control-Allow-Origin:*');
     header('Content-Type:application/json');
     include_once('../../config/db.php');
-    include_once('../../model/company.php');
+    include_once('../../model/belong.php');
 
     $db=new db();
     $connect=$db->connect();
-    $company=new company($connect);
-    $company->show($_GET['id']);
+    $belong=new belong($connect);
+    $belong->show($_GET['id']);
     $ban_item=array(
 
-            'id'=>$company->mb,
-            'name_company'=>$company->name_company,
-            'level'=>$company->level
+            'id'=>$belong->id,
+            'id_staff'=>$belong->id_staff,
+            'id_room'=>$belong->id_room
     );
     echo print_r($ban_item);
 ?>

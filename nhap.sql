@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table cam_ai.company: ~7 rows (approximately)
+-- Dumping data for table cam_ai.company: ~6 rows (approximately)
 DELETE FROM `company`;
 INSERT INTO `company` (`id`, `name_company`, `level`) VALUES
 	(1, 'it', 0),
@@ -49,11 +49,11 @@ CREATE TABLE IF NOT EXISTS `timekeeping` (
   `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',
   `id_belong` int DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  KEY `id_thuoc` (`id_belong`) USING BTREE,
-  CONSTRAINT `FK_lich_thuoc` FOREIGN KEY (`id_belong`) REFERENCES `belong` (`id`)
+  KEY `id_belong` (`id_belong`) USING BTREE,
+  CONSTRAINT `FK_timekeeping_belong` FOREIGN KEY (`id_belong`) REFERENCES `belong` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table cam_ai.timekeeping: ~12 rows (approximately)
+-- Dumping data for table cam_ai.timekeeping: ~13 rows (approximately)
 DELETE FROM `timekeeping`;
 INSERT INTO `timekeeping` (`id`, `date`, `time_now`, `time_out`, `role`, `id_belong`) VALUES
 	(3, '2022-01-09', '14:20:00', '17:00:00', 'muộn', 6),
@@ -78,8 +78,8 @@ CREATE TABLE IF NOT EXISTS `room` (
   `id_company` int DEFAULT NULL,
   `level` int DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  KEY `mban` (`id_company`) USING BTREE,
-  CONSTRAINT `m_ban` FOREIGN KEY (`id_company`) REFERENCES `company` (`id`)
+  KEY `mcompany` (`id_company`) USING BTREE,
+  CONSTRAINT `m_company` FOREIGN KEY (`id_company`) REFERENCES `company` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table cam_ai.room: ~10 rows (approximately)
@@ -109,13 +109,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=50232 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table cam_ai.user: ~15 rows (approximately)
+-- Dumping data for table cam_ai.user: ~12 rows (approximately)
 DELETE FROM `user`;
 INSERT INTO `user` (`id`, `fullname`, `email`, `date_birth`, `date_job_receive`, `status`, `role`) VALUES
 	(1, 'huy', 'kieudanghuy.coder@gmail.com', '2023-01-08', '2023-01-09', 'Đã nghỉ', 'Admin'),
 	(2, 'huy1', 'huydangkieu123@gmail.com', '1111-11-11', '2023-01-09', 'Đang Làm', 'Nhân Viên'),
 	(3, 'Huy3', 'huydangkieu123@gmail.com', '2023-01-12', '2023-01-11', 'Đang Làm', 'Quản lý '),
-	(4, 'bảo', 'ban111@gmail.com', '2023-01-30', '2023-01-30', 'Đang Làm', 'Nhân viên'),
+	(4, 'bảo', 'company111@gmail.com', '2023-01-30', '2023-01-30', 'Đang Làm', 'Nhân viên'),
 	(5, 'hải', 'hai11@gamil.com', '2023-02-08', '2023-02-08', 'Đang làm', 'Quản lý '),
 	(7, 'công', 'cong11@gmail.com', '2023-02-01', '2023-02-01', 'Đang làm', 'Quản lý '),
 	(8, 'Nguyễn văn vậy', 'ngva@gmial.com', '2002-12-12', '2022-12-11', 'Đã Nghỉ', 'Nhân Viên'),
@@ -134,8 +134,8 @@ CREATE TABLE IF NOT EXISTS `belong` (
   PRIMARY KEY (`id`),
   KEY `mp` (`id_room`) USING BTREE,
   KEY `mnv` (`id_staff`) USING BTREE,
-  CONSTRAINT `FK_thuoc_phong` FOREIGN KEY (`id_room`) REFERENCES `room` (`id`),
-  CONSTRAINT `FK_thuoc_ten` FOREIGN KEY (`id_staff`) REFERENCES `user` (`id`)
+  CONSTRAINT `FK_belong_room` FOREIGN KEY (`id_room`) REFERENCES `room` (`id`),
+  CONSTRAINT `FK_belong_user` FOREIGN KEY (`id_staff`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table cam_ai.belong: ~6 rows (approximately)

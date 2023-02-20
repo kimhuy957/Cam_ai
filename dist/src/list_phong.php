@@ -9,49 +9,49 @@ $k=0;
 include '../config/sql.php';
 include '../config/function.php';
 $uri = $_SERVER['REQUEST_URI'];
-    if(($mb==''&&$mp=='')||($uri=='/src/list_phong.php?mb=&mp=')){
+    if(($mb==''&&$mp=='')||($uri=='/src/list_phong.php?mb=&id=')){
         echo "<tr>
-            <td>Mã ban</td>
-            <td>Tên ban</td>
+            <td>Mã company</td>
+            <td>Tên company</td>
         </tr>";
-        $sql=mysqli_query($conn,ban());
+        $sql=mysqli_query($conn,company());
         while($hien=mysqli_fetch_assoc($sql)){
-            echo"<tr><td><a href='?mb=".$hien['mb']."&mp='''  class='text-decoration-none 
- text-body-secondary'>".$hien['mb']."</a></td>
-            <td><a href='?mb=".$hien['mb']."&mp=''' class='text-decoration-none 
- text-body-secondary'>".$hien['ten_ban']."</a></td>";
+            echo"<tr><td><a href='?mb=".$hien['id']."&id='''  class='text-decoration-none 
+ text-body-secondary'>".$hien['id']."</a></td>
+            <td><a href='?mb=".$hien['id']."&id=''' class='text-decoration-none 
+ text-body-secondary'>".$hien['name_company']."</a></td>";
             echo "</tr>";
         }
     }
     
     elseif(($uri!='/src/list_phong.php')){
         $mb=$_GET['mb'];
-        $mp=$_GET['mp'];
+        $mp=$_GET['id'];
         if($mb!=""&&$mp==''){
             echo "<tr >
             <td>Mã phòng</td>
             <td>Tên phòng</td>
-            <td>Thuộc ban</td>
+            <td>Thuộc company</td>
             </tr>";
             
-            $sql2=mysqli_query($conn,'SELECT ban.ten_ban,phong.ten_phong,phong.mp from ban left join phong on ban.mb=phong.m_ban where phong.m_ban='.$mb.'');
+            $sql2=mysqli_query($conn,'SELECT company.name_company,room.name_room,room.mp from company left join room on company.mb=room.id_company where room.id_company='.$mb.'');
             while($hien1=mysqli_fetch_assoc($sql2)){
                 echo"<tr>
-                <td><a href='?mb=".$mb."&mp=".$hien1['mp']."' class='text-decoration-none 
- text-body-secondary'>".$hien1['mp']."</a>
+                <td><a href='?mb=".$mb."&id=".$hien1['id']."' class='text-decoration-none 
+ text-body-secondary'>".$hien1['id']."</a>
                 </td>
-                <td><a href='?mb=".$mb."&mp=".$hien1['mp']."' class='text-decoration-none 
- text-body-secondary'>".$hien1['ten_phong']."</a></td>
-                <td><a href='?mb=".$mb."&mp=".$hien1['mp']."' class='text-decoration-none 
- text-body-secondary'>".$hien1['ten_ban']."</a></td>";
+                <td><a href='?mb=".$mb."&id=".$hien1['id']."' class='text-decoration-none 
+ text-body-secondary'>".$hien1['name_room']."</a></td>
+                <td><a href='?mb=".$mb."&id=".$hien1['id']."' class='text-decoration-none 
+ text-body-secondary'>".$hien1['name_company']."</a></td>";
                 echo "</tr>";
                 
             }
         }
-        //  $mp=$_GET['mp'];
+        //  $mp=$_GET['id'];
         if($mb!=''&&$mp!=''){
             // $mb=$_GET['mb'];
-            // $mp=$_GET['mp'];
+            // $mp=$_GET['id'];
             echo' <tr>
                 <td>STT</td>
                 <td>Mã nhân viên</td>
@@ -64,41 +64,41 @@ $uri = $_SERVER['REQUEST_URI'];
                 <td>Sửa</td>
                 <td>xóa</td>
             </tr>';
-            $sql3 =mysqli_query($conn,thuoc().' where mp='.$mp.'');
+            $sql3 =mysqli_query($conn,belong().' where id_room='.$mp.'');
             if(mysqli_num_rows($sql3)>0){
             while($hien2=mysqli_fetch_assoc($sql3)){
-                $sql3_use=mysqli_query($conn,ten().' where mnv='.$hien2['mnv'].'');
+                $sql3_use=mysqli_query($conn,user().' where id='.$hien2['id'].'');
                 
                     $i=1;
                     while($ten1=mysqli_fetch_assoc($sql3_use)){
                             echo "<tr>
                            
-                            <td><a href='../view/nhan_vien.php?mnv=".$ten1['mnv']."' class='text-decoration-none 
+                            <td><a href='../view/nhan_vien.php?id=".$ten1['id']."' class='text-decoration-none 
  text-body-secondary' target='_top'>$i</a></td>
-                            <td><a href='../view/nhan_vien.php?mnv=".$ten1['mnv']."' class='text-decoration-none 
- text-body-secondary' target='_top'>".$ten1['mnv']."</a></td>
-                            <td><a href='../view/nhan_vien.php?mnv=".$ten1['mnv']."' class='text-decoration-none 
- text-body-secondary' target='_top'>".$ten1['tennv']."</a></td>
-                            <td><a href='../view/nhan_vien.php?mnv=".$ten1['mnv']."' class='text-decoration-none 
+                            <td><a href='../view/nhan_vien.php?id=".$ten1['id']."' class='text-decoration-none 
+ text-body-secondary' target='_top'>".$ten1['id']."</a></td>
+                            <td><a href='../view/nhan_vien.php?id=".$ten1['id']."' class='text-decoration-none 
+ text-body-secondary' target='_top'>".$ten1['fullname']."</a></td>
+                            <td><a href='../view/nhan_vien.php?id=".$ten1['id']."' class='text-decoration-none 
  text-body-secondary' target='_top'>".$ten1['email']."</a></td>
-                            <td><a href='../view/nhan_vien.php?mnv=".$ten1['mnv']."' class='text-decoration-none 
- text-body-secondary' target='_top'>".$ten1['ngay_sinh']."</a></td>
-                            <td><a href='../view/nhan_vien.php?mnv=".$ten1['mnv']."' class='text-decoration-none 
- text-body-secondary' target='_top'>".$ten1['ngay_vao']."</a></td>
-                            <td><a href='../view/nhan_vien.php?mnv=".$ten1['mnv']."' class='text-decoration-none 
- text-body-secondary' target='_top'>".$ten1['tinh_trang']."</a></td>
-                            <td><a href='../view/nhan_vien.php?mnv=".$ten1['mnv']."' class='text-decoration-none 
+                            <td><a href='../view/nhan_vien.php?id=".$ten1['id']."' class='text-decoration-none 
+ text-body-secondary' target='_top'>".$ten1['date_birth']."</a></td>
+                            <td><a href='../view/nhan_vien.php?id=".$ten1['id']."' class='text-decoration-none 
+ text-body-secondary' target='_top'>".$ten1['date_job_receive']."</a></td>
+                            <td><a href='../view/nhan_vien.php?id=".$ten1['id']."' class='text-decoration-none 
+ text-body-secondary' target='_top'>".$ten1['status']."</a></td>
+                            <td><a href='../view/nhan_vien.php?id=".$ten1['id']."' class='text-decoration-none 
  text-body-secondary' target='_top'>";
-                            $sql5=mysqli_query($conn,phong());
+                            $sql5=mysqli_query($conn,room());
                             while ($hien_mp=mysqli_fetch_assoc($sql5)){
-                            $sql4="SELECT  phong.ten_phong ,thuoc.id from thuoc 
-                            LEFT JOIN phong on phong.mp=thuoc.mp 
-                             LEFT JOIN ten on ten.mnv=thuoc.mnv 
-                             WHERE phong.mp=".$hien_mp['mp']." AND ten.mnv=".$ten1['mnv']."";
+                            $sql4="SELECT  room.name_room ,belong.id_room from belong 
+                            LEFT JOIN room on room.id=belong.id_room
+                             LEFT JOIN user on user.id=belong.id_staff
+                             WHERE room.id=".$hien_mp['id']." AND user.id=".$ten1['id']."";
                              $h_tp=mysqli_query($conn,$sql4);
                              while($hien_tphong=mysqli_fetch_assoc($h_tp)){
                                     if(mysqli_num_rows($h_tp)>0){
-                                    echo "".$hien_tphong['ten_phong']."<br>";
+                                    echo "".$hien_tphong['name_room']."<br>";
                                     }
                                     if(mysqli_num_rows($h_tp)<0){
                                         echo "Chưa có phòng nào<br>";

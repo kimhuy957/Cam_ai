@@ -158,12 +158,35 @@
 									"item": [
 										{
 											"name": "create.php",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
+												"auth": {
+													"type": "apikey"
+												},
 												"method": "POST",
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n\"mnv\": 9,\r\n\"tennv\":\"Nguyễn văn A\",\r\n\"email\":\"ngva@gmial.com\",\r\n\"ngay_sinh\":\"2002-12-12\",\r\n\"ngay_vao\":\"2022-12-11\",\r\n\"tinh_trang\":\"Đang làm\",\r\n\"vai_tro\":\"Nhân Viên\"\r\n}",
+													"raw": "{\r\n    \"id\":\"8\",\r\n    \"fullname\":\"Nguyễn ra vậy\",\r\n    \"email\":\"vay2gmail\",\r\n    \"date_birth\":\"2002-02-03\",\r\n    \"date_job_receive\":\"2022-12-02\",\r\n    \"status\":\"Đang làm\",\r\n    \"role\":\"Nhân Viên\"\r\n\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -171,20 +194,18 @@
 													}
 												},
 												"url": {
-													"raw": "http://huma_new.test:8081/dist/api/nhan_vien/create.php",
-													"protocol": "http",
+													"raw": "{{url}}/dist/api/nhan_vien/create.php",
 													"host": [
-														"huma_new",
-														"test"
+														"{{url}}"
 													],
-													"port": "8081",
 													"path": [
 														"dist",
 														"api",
 														"nhan_vien",
 														"create.php"
 													]
-												}
+												},
+												"description": "StartFragment\n\n{    \"id\":\"232312312\",   định dạng int key cảu bảng\n\n \"fullname\":\"Nguyễn ra vậy\",  Strinng tên cuae nhân viên\n\n  \"email\":\"vay2gmail\",   String email cảu nhân viên input loại email\n\n \"date_birth\":\"2002-02-03\",   date YYYY-MM-DD ngày sinh của nhân viên\n\n \"date_job_receive\":\"2022-12-02\",    date YYYY-MM-DD ngày vào công ty\n\n\"status\":\"Đang làm\",    String tình trạng hiện tại cảu nhân viên này (nghỉ làm ,đang làm ,nghỉ bệnh )\n\n\"role\":\"Nhân Viên\"( String chức vụ của nhân viên {Admin, quản lý , nhân viên})\n\nEndFragment\n\n  \n  \n  \n}\n\nEndFragment"
 											},
 											"response": []
 										},
@@ -195,7 +216,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"mnv\":\"9\"\r\n}",
+													"raw": "{\r\n    \"id\":\"9\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -203,7 +224,7 @@
 													}
 												},
 												"url": {
-													"raw": "http://huma_new.test:8081/dist/api/nhan_vien/delete.php?mnv=9",
+													"raw": "http://huma_new.test:8081/dist/api/nhan_vien/delete.php?",
 													"protocol": "http",
 													"host": [
 														"huma_new",
@@ -218,8 +239,8 @@
 													],
 													"query": [
 														{
-															"key": "mnv",
-															"value": "9"
+															"key": "",
+															"value": null
 														}
 													]
 												}
@@ -228,9 +249,16 @@
 										},
 										{
 											"name": "read.php",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
 											"request": {
 												"method": "GET",
 												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": []
+												},
 												"url": {
 													"raw": "{{url}}/dist/api/nhan_vien/read.php",
 													"host": [
@@ -241,6 +269,14 @@
 														"api",
 														"nhan_vien",
 														"read.php"
+													],
+													"query": [
+														{
+															"key": null,
+															"value": null,
+															"description": "xem tất các danh sách có trong bảng",
+															"disabled": true
+														}
 													]
 												}
 											},
@@ -264,7 +300,7 @@
 													}
 												},
 												"url": {
-													"raw": "{{url}}/dist/api/nhan_vien/show.php",
+													"raw": "{{url}}/dist/api/nhan_vien/show.php?id=1",
 													"host": [
 														"{{url}}"
 													],
@@ -278,7 +314,7 @@
 														{
 															"key": "id",
 															"value": "1",
-															"disabled": true
+															"description": "int (mã nhân viên muốn xem thông tin đã xem )"
 														}
 													]
 												}
@@ -289,7 +325,28 @@
 											"name": "update.php",
 											"request": {
 												"method": "PUT",
-												"header": []
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n\"id\": 8,\r\n\"fullname\":\"Nguyễn văn vậy\",\r\n\"email\":\"ngva@gmial.com\",\r\n\"date_birth\":\"2002-12-12\",\r\n\"date_job_receive\":\"2022-12-11\",\r\n\"status\":\"Đã Nghỉ\",\r\n\"role\":\"Nhân Viên\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/nhan_vien/update.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"nhan_vien",
+														"update.php"
+													]
+												}
 											},
 											"response": []
 										}
@@ -323,7 +380,8 @@
 														"phong",
 														"create.php"
 													]
-												}
+												},
+												"description": "StartFragment\n\n{    \"id\":\"1\",    (int mã của phòng )\n\n\"name_room\":\"âsasas\",    (String tên phong)\n\n\"id_company\":\"12\"(int mã liên kết vói company)\n\nEndFragme)\n\n}\n\nEndFragment"
 											},
 											"response": []
 										},
@@ -454,7 +512,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"date\":\"2023-02-18\",//Y-m-d\r\n    \"time_di\":\"08:00\",//H:i\r\n    \"time_ve\":\"17:00\",//H:i\r\n    \"tinh_trang\":\"đi đúng h\",//String\r\n    \"id_thuoc\":\"13\"//int bang thuoc\r\n}",
+													"raw": "{   \r\n    \"date\":\"2023-02-18\",\r\n    \"time_now\":\"08:00\",\r\n    \"time_out\":\"17:00\",\r\n    \"role\":\"đi đúng h\",\r\n    \"id_belong\":\"13\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -472,7 +530,8 @@
 														"Cam_cong",
 														"create.php"
 													]
-												}
+												},
+												"description": "{ \"date\":\"2023-02 18\", date YYYY-MM-DD(thơi gian hôm chấm công)\n\n\"time_now\":\"08:00\", Time HH:ii (giờ và phút lúc đến của nhân viên)\n\n\"time_out\":\"17:00\", Time HH:ii (giờ phút lúc về của nhân viên)\n\n\"role\":\"đi đúng h\", String (Nội dung đến đúng giớ , muộn ,nghỉ )\n\n\"id_belong\":\"13\"(int liên kết vói các bảng belong để phân ra nhân viên và phong )"
 											},
 											"response": []
 										},
@@ -554,9 +613,42 @@
 										},
 										{
 											"name": "update.php",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
-												"method": "GET",
-												"header": []
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\":11,\r\n    \"date\":\"2023-02-18\",\r\n    \"time_now\":\"08:00\",\r\n    \"time_out\":\"17:00\",\r\n    \"role\":\"đi đúng h\",\r\n    \"id_belong\":\"13\"\r\n\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/Cam_cong/update.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"Cam_cong",
+														"update.php"
+													]
+												},
+												"description": "id :iny mã của bảng timetkeeping key\n\n\"date\":\"2023-02 18\", date YYYY-MM- DD(thơi gian hôm chấm công)\n\n\"time_now\":\"08:00\", Time HH:ii (giờ và phút lúc đến của nhân viên)\n\n\"time_out\":\"17:00\", Time HH:ii (giờ phút lúc về của nhân viên)\n\n\"role\":\"đi đúng h\", String (Nội dung đến đúng giớ , muộn ,nghỉ )\n\n\"id_belong\":\"13\"(int liên kết vói các bảng belong để phân ra nhân viên và phong )"
 											},
 											"response": []
 										}
@@ -594,6 +686,168 @@
 											"request": {
 												"method": "GET",
 												"header": []
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "thuoc",
+									"item": [
+										{
+											"name": "create.php",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{   \r\n    \"date\":\"2023-02-18\",\r\n    \"time_now\":\"08:00\",\r\n    \"time_out\":\"17:00\",\r\n    \"role\":\"đi đúng h\",\r\n    \"id_belong\":\"13\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/Cam_cong/create.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"Cam_cong",
+														"create.php"
+													]
+												},
+												"description": "{\n\nStartFragment\n\nid_staff: int liện kết vơi với bảng user\n\nEndFragment\n\nid_room: int liện kết vơi với bảng room\n\nEndFragment\n\nEndFr}"
+											},
+											"response": []
+										},
+										{
+											"name": "delete.php",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id_lich\":\"13\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}//dist/api/Cam_cong/delete.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"",
+														"dist",
+														"api",
+														"Cam_cong",
+														"delete.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "read.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/Cam_cong/read.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"Cam_cong",
+														"read.php"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "show.php",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/dist/api/Cam_cong/show.php?id=3",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"Cam_cong",
+														"show.php"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "3"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update.php",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\":11,\r\n    \"date\":\"2023-02-18\",\r\n    \"time_now\":\"08:00\",\r\n    \"time_out\":\"17:00\",\r\n    \"role\":\"đi đúng h\",\r\n    \"id_belong\":\"13\"\r\n\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/dist/api/Cam_cong/update.php",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"dist",
+														"api",
+														"Cam_cong",
+														"update.php"
+													]
+												}
 											},
 											"response": []
 										}

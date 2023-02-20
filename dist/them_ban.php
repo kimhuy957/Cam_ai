@@ -268,7 +268,7 @@ include 'config/function.php';?>
 
                 <div class="container-fluid page__container">
                     
-                        <form action="api/them/them_ban.php" method="POST" enctype="multipart/form-data" >
+                        <form action="api/them/themban.php" method="POST" enctype="multipart/form-data" >
                         <div class="row">
                             <div class="col-lg-9 pr-lg-0">
 
@@ -282,7 +282,7 @@ include 'config/function.php';?>
                                                 <div class="col-sm-9">
                                                     <input type="text"
                                                            class="form-control"
-                                                           name="ten_ban"
+                                                           name="name_company"
                                                            placeholder="Nhập tên phòng ">
                                                 </div>
 

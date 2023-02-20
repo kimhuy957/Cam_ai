@@ -1,26 +1,7 @@
-<?php include '../head.php';?>
+<?php include "../head.php";
 
-                <div class="border-bottom-2 py-32pt position-relative z-1">
-                    <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
-                        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="container-fluid page__container">
-                    <div class="page-section">
-                        <div class="card mb-lg-32pt">
-
-                            <div class="table-responsive"
-                                 data-toggle="lists"
-                                 data-lists-sort-by="js-lists-values-employee-name"
-                                 data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
-
-                                <div class="card-header">
-                                    <form class="form-inline">
-                                    <?php include "../head.php";?>
+?>
+<link rel="stylesheet" href="../dist/assets/css/css.css">
 <div class="mdk-drawer-layout__content page-content">
 
 <!-- Header -->
@@ -439,10 +420,20 @@
                     <?php
                         include "config/sql.php";
                         include "config/function.php";
-                        $sql=mysqli_query($conn,"SELECT * From ten");
+                        $sql=mysqli_query($conn,"SELECT * From user");
                         $i=0;
-                        while($hien=mysqli_fetch_assoc($sql)){
-                            $logo=substr("".$hien['tennv']."",0,1);
+                        $data=array();
+                        while ($row=mysqli_fetch_array($sql)){
+                            $data[]=$row;
+                        }
+                        $so_dong=10;
+                        $tong_dong=ceil(count($data)/$so_dong);
+                        $hien_tai=isset($_GET['page']) ? intval($_GET['page']):1;
+                        $hien_tai=max(1,min($hien_tai,$tong_dong));
+                        $bu_lai=($hien_tai-1)*$so_dong;
+                        $dong_hientai= array_slice($data,$bu_lai,$so_dong);
+                        foreach($dong_hientai as $data){
+                            $logo=substr("".$data[1]."",0,1);
                                 if($i>=10){
                                     
                                 }
@@ -470,8 +461,8 @@
                                         <div class="media-body">
 
                                             <div class="d-flex flex-column">
-                                                <p class="mb-0"><strong class="js-lists-values-employee-name">'.$hien['tennv'].'</strong></p>
-                                                <small class="js-lists-values-employee-email text-50">'.$hien['email'].'</small>
+                                                <p class="mb-0"><strong class="js-lists-values-employee-name">'.$data[1].'</strong></p>
+                                                <small class="js-lists-values-employee-email text-50">'.$data[2].'</small>
                                             </div>
 
                                         </div>
@@ -481,33 +472,33 @@
 
                                 <td>
                                     <div class="d-flex align-items-center">
-                                           <span class="js-lists-values-employer-name text-70">'.$hien['ngay_sinh'].'</span>
+                                           <span class="js-lists-values-employer-name text-70">'.$data[3].'</span>
                                     </div>
                                 </td>
 
-                                <td class="text-center js-lists-values-projects small text-70">'.$hien['ngay_vao'].'</td>
+                                <td class="text-center js-lists-values-projects small text-70">'.$data[4].'</td>
 
                                 <td>
 
                                     <a href=""
-                                       class="chip chip-outline-secondary">'.$hien['vai_tro'].'</a>
+                                       class="chip chip-outline-secondary">'.$data[6].'</a>
 
                                 </td>
                                 <td>
                                 <div class="text-center js-lists-values-projects small text-70">';
-                                    if(ucwords($hien['tinh_trang'])=="Đang Làm"){
+                                    if(ucwords($data[5])=="Đang Làm"){
                                         echo '
-                                        <span style="color:green">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:green">'.$data[5].'</span>
                                         ';
                                     }
-                                    elseif(ucwords($hien['tinh_trang'])=="Đã Nghỉ"){
+                                    elseif(ucwords($data[5])=="Đã Nghỉ"){
                                         echo '
-                                        <span style="color:red;">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:red;">'.$data[5].'</span>
                                         ';
                                     }
                                     else{
                                         echo '
-                                        <span style="color:blue;">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:blue;">'.$data[5].'</span>
                                         ';
                                     }
                            echo'</div></td>
@@ -523,7 +514,7 @@
             </table>
         </div>
 
-        <div class="card-footer p-8pt">
+        <div class="card-footer p-8pt "'id='hien'>
 
             <ul class="pagination justify-content-start pagination-xsm m-0">
                 <li class="page-item disabled">
@@ -540,19 +531,29 @@
                        data-toggle="dropdown"
                        href="#"
                        aria-label="Page">
-                        <span>1</span>
+                        <?php
+                        for($i=1;$i<=$tong_dong;$i++){
+                            if($i==$hien_tai){
+                                echo " <span>$i</span>";
+                            } 
+                        }
+                        ?>
+                        
                     </a>
-                    <div class="dropdown-menu">
-                        <a href=""
-                           class="dropdown-item active">1</a>
-                        <a href=""
-                           class="dropdown-item">2</a>
-                        <a href=""
-                           class="dropdown-item">3</a>
-                        <a href=""
-                           class="dropdown-item">4</a>
-                        <a href=""
-                           class="dropdown-item">5</a>
+                    <div class="dropdown-menu " >
+                        <?php
+                            for($i=1;$i<=$tong_dong;$i++){
+                                if($i==$hien_tai){
+                                    echo "<strong>$i</strong> ";
+                                }
+                                
+                                if($i!=$hien_tai){
+                                    echo '<a href="?page='.$i.'"
+                                    class="dropdown-item active">'.$i.'</a>
+                                    ';
+                                }
+                            }
+                        ?>
                     </div>
                 </li>
                 <li class="page-item">
@@ -574,10 +575,9 @@
     </div>
 
 </div>
-
 <div class="js-fix-footer footer border-top-2">
-    <div class="container-fluid page__container page-section d-flex flex-column">
-        <p class="text-70 brand mb-24pt">
+    <div class=" page-section d-flex flex-column">
+        <p class="text-70 brand mb-20pt">
             <img class="brand-icon"
                  src="assets/images/logo/black-70@2x.png"
                  width="30"
@@ -632,229 +632,4 @@
 <div>
     
 </div>
-<?php include '../body_js.php';?>                <label class="mr-sm-2 form-label"
-                                               for="inlineFormFilterBy">Filter by:</label>
-                                        <input type="text"
-                                               class="form-control search mb-2 mr-sm-2 mb-sm-0"
-                                               id="inlineFormFilterBy"
-                                               placeholder="Search ...">
-
-                                        <label class="sr-only"
-                                               for="inlineFormRole">Role</label>
-                                        <select id="inlineFormRole"
-                                                class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                                            <option value="All Roles">All Roles</option>
-                                        </select>
-
-                                        <div class="ml-auto mb-2 mb-sm-0 custom-control-inline mr-0">
-                                            <label class="form-label mb-0"
-                                                   for="active">Active</label>
-                                            <div class="custom-control custom-checkbox-toggle ml-8pt">
-                                                <input checked=""
-                                                       type="checkbox"
-                                                       id="active"
-                                                       class="custom-control-input">
-                                                <label class="custom-control-label"
-                                                       for="active">Active</label>
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-                                </div>
-                                <table class="table mb-0 thead-border-top-0 table-nowrap">
-                                <thead>
-                                    <tr>
-
-                                        <th style="width: 18px;"
-                                            class="pr-0">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox"
-                                                       class="custom-control-input js-toggle-check-all"
-                                                       data-target="#staff"
-                                                       id="customCheckAllstaff">
-                                                <label class="custom-control-label"
-                                                       for="customCheckAllstaff"><span class="text-hide">Toggle all</span></label>
-                                            </div>
-                                        </th>
-
-                                        <th style="width: 150px;">
-                                            <a href="javascript:void(0)"
-                                               class="sort"
-                                               data-sort="js-lists-values-employer-name">Mã Nhân Viên</a>
-                                        </th>
-                                        <th>
-                                            <a href="javascript:void(0)"
-                                               class="sort"
-                                               data-sort="js-lists-values-employee-name">Ngày Sinh</a>
-                                        </th>
-
-
-                                        <th class="text-center"
-                                            style="width: 48px;">
-                                            <a href="javascript:void(0)"
-                                               class="sort"
-                                               data-sort="js-lists-values-projects">Ngày vào</a>
-                                        </th>
-
-                                        <th style="width: 37px;">Vai trò</th>
-
-                                        <!-- <th style="width: 120px;">
-                                            <a href="javascript:void(0)"
-                                               class="sort"
-                                               data-sort="js-lists-values-activity">Activity</a>
-                                        </th>-->
-                                        <th style="width: 51px;">
-                                            <a href="javascript:void(0)"
-                                               class="sort"
-                                               data-sort="js-lists-values-earnings">Tình trạng</a>
-                                        </th> 
-                                        <th style="width: 24px;"
-                                            class="pl-0"></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="list"
-                                       id="inbo">
-                                    <?php
-                                        include "config/sql.php";
-                                        include "config/function.php";
-                                        $sql=mysqli_query($conn,"SELECT * From ten");
-                                        while($hien=mysqli_fetch_assoc($sql)){
-                                            $logo=substr("".$hien['tennv']."",0,1);
-                                            echo'
-                                            <tr>
-        
-                                                <td class="pr-0">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox"
-                                                               class="custom-control-input js-check-selected-row"
-                                                               id="customCheck1_2">
-                                                        <label class="custom-control-label"
-                                                               for="customCheck1_2"><span class="text-hide">Check</span></label>
-                                                    </div>
-                                                </td>
-                                                <td>
-        
-                                                    <div class="media flex-nowrap align-items-center"
-                                                         style="white-space: nowrap;">
-                                                        <div class="avatar avatar-32pt mr-8pt">
-        
-                                                            <span class="avatar-title rounded-circle">'.$logo.'</span>
-        
-                                                        </div>
-                                                        <div class="media-body">
-        
-                                                            <div class="d-flex flex-column">
-                                                                <p class="mb-0"><strong class="js-lists-values-employee-name">'.$hien['tennv'].'</strong></p>
-                                                                <small class="js-lists-values-employee-email text-50">'.$hien['email'].'</small>
-                                                            </div>
-        
-                                                        </div>
-                                                    </div>
-        
-                                                </td>
-        
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                           <span class="js-lists-values-employer-name text-70">'.$hien['ngay_sinh'].'</span>
-                                                    </div>
-                                                </td>
-        
-                                                <td class="text-center js-lists-values-projects small text-70">'.$hien['ngay_vao'].'</td>
-        
-                                                <td>
-        
-                                                    <a href=""
-                                                       class="chip chip-outline-secondary">'.$hien['vai_tro'].'</a>
-        
-                                                </td>
-                                                <td>
-                                                <div class="text-center js-lists-values-projects small text-70">';
-                                                    if(ucwords($hien['tinh_trang'])=="Đang Làm"){
-                                                        echo '
-                                                        <span style="color:green">'.$hien['tinh_trang'].'</span>
-                                                        ';
-                                                    }
-                                                    elseif(ucwords($hien['tinh_trang'])=="Đã Nghỉ"){
-                                                        echo '
-                                                        <span style="color:red;">'.$hien['tinh_trang'].'</span>
-                                                        ';
-                                                    }
-                                                    else{
-                                                        echo '
-                                                        <span style="color:blue;">'.$hien['tinh_trang'].'</span>
-                                                        ';
-                                                    }
-                                           echo'</div></td>
-                                            </tr>
-                                            ';
-                                        }
-                                    ?>
-
- 
-
-                                </tbody>
-                            </table>
-                            </div>
-
-                            <div class="card-footer p-8pt">
-
-                                <ul class="pagination justify-content-start pagination-xsm m-0">
-                                    <li class="page-item disabled">
-                                        <a class="page-link"
-                                           href="#"
-                                           aria-label="Previous">
-                                            <span aria-hidden="true"
-                                                  class="material-icons">chevron_left</span>
-                                            <span>Prev</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item dropdown">
-                                        <a class="page-link dropdown-toggle"
-                                           data-toggle="dropdown"
-                                           href="#"
-                                           aria-label="Page">
-                                            <span>1</span>
-                                        </a>
-                                        <div class="dropdown-menu">
-                                            <a href=""
-                                               class="dropdown-item active">1</a>
-                                            <a href=""
-                                               class="dropdown-item">2</a>
-                                            <a href=""
-                                               class="dropdown-item">3</a>
-                                            <a href=""
-                                               class="dropdown-item">4</a>
-                                            <a href=""
-                                               class="dropdown-item">5</a>
-                                        </div>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link"
-                                           href="#"
-                                           aria-label="Next">
-                                            <span>Next</span>
-                                            <span aria-hidden="true"
-                                                  class="material-icons">chevron_right</span>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-
-
->   
-
-
-
-                    </div>
-                </div>
-
-
-            <!-- // END drawer-layout__content -->
-
-            <!-- drawer -->
-       <?php include '../body_js.php';?>
+<?php include '../body_js.php';?>

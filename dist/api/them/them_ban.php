@@ -9,15 +9,15 @@ if ($conn->connect_error) {
 }
 
 // Lấy dữ liệu từ form
-$ten=$_POST["ten_ban"];
+$user=$_POST["name_company"];
 // Chèn dữ liệu vào bảng "customers"
-$sql = "INSERT INTO `quanly`.`ban` 
-(`mb`, `ten_ban`,`level`) 
- VALUES (NULL ,'".$ten."',0)";
+$sql = "INSERT INTO `cam_ai`.`company` 
+(`id`, `name_company`,`level`) 
+ VALUES (NULL ,'".$user."',0)";
                                             
 
 if ($conn->query($sql) === TRUE) {
-    echo "Lưu thành công tên ban";
+    echo "Lưu thành công tên company";
     header("http://huma_new.test:8081/dist/them_phong.php");
 
 } else {
@@ -27,13 +27,13 @@ if ($conn->query($sql) === TRUE) {
 // Gửi dữ liệu tới API
 $n='';
 $data = array(
-'ten_ban'=>$n,
+'name_company'=>$n,
 );
 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://huma_new.test:8081/dist/api/them/them_ban.php",
+  CURLOPT_URL => "http://huma_new.test:8081/dist/api/them/themban.php",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,

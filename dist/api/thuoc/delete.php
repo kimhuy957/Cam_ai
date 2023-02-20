@@ -1,22 +1,20 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
-header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Methods: DELETE');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
-
 include_once('../../config/db.php');
-include_once('../../model/company.php');
+include_once('../../model/belong.php');
 
 $db=new db();
 $connect=$db->connect();
-$company=new company($connect);
+$belong=new belong($connect);
 $data=json_decode(file_get_contents("php://input"));
-$company->mb=$data->mb;
-$company->name_company=$data->name_company;
-if($company->create($data->mb,$data->name_company)){
-    echo json_encode(array('message','Question Created'));
+$belong->id=$data->id;
+if($belong->delete($data->id)){
+    echo json_encode(array('message','Question DELETE'));
 }
 else{
-    echo json_encode(array('message','Question Not Created'));
+    echo json_encode(array('message','Question Not DELETE'));
 }
 ?>

@@ -2,20 +2,20 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
     include_once('../../config/db.php');
-    include_once('../../model/lich.php');
+    include_once('../../model/timekeeping.php');
 
     $db=new db();
     $connect=$db->connect();
-    $lich=new lich($connect);
-    $lich->show($_GET['id']);
+    $timekeeping=new timekeeping($connect);
+    $timekeeping->show($_GET['id']);
     $lich_item=array(
 
-            'id_lich'=>$lich->id_lich,
-            'date'=>$lich->date,
-            'time_di'=>$lich->time_di,
-            'time_ve'=>$lich->time_ve,
-            'tinh_trang'=>$lich->tinh_trang,
-            'id_thuoc'=>$lich->$id_thuoc
+            'id'=>$timekeeping->id,
+            'date'=>$timekeeping->date,
+            'time_now'=>$timekeeping->time_now,
+            'time_out'=>$timekeeping->time_out,
+            'role'=>$timekeeping->role,
+            'id_belong'=>$timekeeping->$id_belong
     );
     echo print_r($lich_item);
 ?>

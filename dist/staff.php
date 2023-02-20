@@ -420,7 +420,7 @@
                     <?php
                         include "config/sql.php";
                         include "config/function.php";
-                        $sql=mysqli_query($conn,"SELECT * From ten");
+                        $sql=mysqli_query($conn,"SELECT * From user");
                         $i=0;
                         $data=array();
                         while ($row=mysqli_fetch_array($sql)){

@@ -10,14 +10,14 @@ $db=new db();
 $connect=$db->connect();
 $nhan_vien=new nhanvien($connect);
 $data=json_decode(file_get_contents("php://input"));
-$nhan_vien->mnv=$data->mnv;
-$nhan_vien->tennv=$data->tennv;
+$nhan_vien->id=$data->id;
+$nhan_vien->fullname=$data->fullname;
 $nhan_vien->email=$data->email;
-$nhan_vien->ngay_sinh=$data->ngay_sinh;
-$nhan_vien->ngay_vao=$data->ngay_vao;
-$nhan_vien->tinh_trang=$data->tinh_trang;
-$nhan_vien->tinh_trang=$data->vai_tro;
-if($nhan_vien->update($data->mnv,$data->tennv,$data->email,$data->ngay_sinh,$data->ngay_vao,$data->tinh_trang,$data->vai_tro)){
+$nhan_vien->date_birth=$data->date_birth;
+$nhan_vien->date_job_receive=$data->date_job_receive;
+$nhan_vien->status=$data->status;
+$nhan_vien->status=$data->role;
+if($nhan_vien->update($data->id,$data->fullname,$data->email,$data->date_birth,$data->date_job_receive,$data->status,$data->role)){
     echo json_encode(array('message','Question Update'));
 }
 else{

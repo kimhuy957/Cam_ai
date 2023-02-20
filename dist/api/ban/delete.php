@@ -4,14 +4,14 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: DELETE');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 include_once('../../config/db.php');
-include_once('../../model/ban.php');
+include_once('../../model/company.php');
 
 $db=new db();
 $connect=$db->connect();
-$ban=new ban($connect);
+$company=new company($connect);
 $data=json_decode(file_get_contents("php://input"));
-$ban->mb=$data->mb;
-if($ban->delete($data->mb)){
+$company->mb=$data->mb;
+if($company->delete($data->mb)){
     echo json_encode(array('message','Question DELETE'));
 }
 else{

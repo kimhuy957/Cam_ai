@@ -329,14 +329,14 @@
              data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
             <div class="list-group list-group-form">
                                     <?php
-                                        $sql=mysqli_query($conn,"SELECT * from ten Where mnv=".$_GET['mnv']."");
+                                        $sql=mysqli_query($conn,"SELECT * from user Where id=".$_GET['id']."");
                                         while($hien=mysqli_fetch_assoc($sql)){
                                             echo'
                                             <div class="list-group-item">
                                                 <div class="form-group row align-items-center mb-0">
                                                     <label class="form-label col-form-label col-sm-3">Mã Nhân Viên</label>
                                                     <div class="col-sm-9">
-                                                        <h2>'.$hien['mnv'].'</h2>
+                                                        <h2>'.$hien['id'].'</h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -344,7 +344,7 @@
                                                 <div class="form-group row align-items-center mb-0">
                                                     <label class="form-label col-form-label col-sm-3">Họ và tên</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" value="'.$hien['tennv'].'" placeholder="Ghi họ và tên">
+                                                        <input type="text" class="form-control" value="'.$hien['fullname'].'" placeholder="Ghi họ và tên">
                                                     </div>
                                                 </div>
                                             </div>
@@ -360,7 +360,7 @@
                                                 <div class="form-group row align-items-center mb-0">
                                                     <label class="form-label col-form-label col-sm-3">Ngày sinh</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" class="form-control" value="'.$hien['ngay_sinh'].'">
+                                                        <input type="date" class="form-control" value="'.$hien['date_birth'].'">
                                                     </div>
                                                 </div>
                                             </div>
@@ -368,7 +368,7 @@
                                             <div class="form-group row align-items-center mb-0">
                                                 <label class="form-label col-form-label col-sm-3">Ngày vào</label>
                                                 <div class="col-sm-9">
-                                                    <input type="date" class="form-control" value="'.$hien['ngay_vao'].'">
+                                                    <input type="date" class="form-control" value="'.$hien['date_job_receive'].'">
                                                 </div>
                                             </div>
                                         </div>
@@ -376,7 +376,7 @@
                                         <div class="form-group row align-items-center mb-0">
                                             <label class="form-label col-form-label col-sm-3">Vai Trò</label>
                                             <div class="col-sm-9">
-                                            <select id="cars" value="'.$hien['vai_tro'].'">
+                                            <select id="cars" value="'.$hien['role'].'">
                                             <option value="1">Admin</option>
                                             <option value="2">Quản lý</option>
                                             <option value="3">Nhân Viên</option>

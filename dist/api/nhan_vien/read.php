@@ -14,12 +14,12 @@
     while($row=mysqli_fetch_assoc($read)){
         extract($row);
         $nhan_vien_item=array(
-            'mnv'=>$mnv,
-            'title'=>$tennv,
+            'id'=>$id,
+            'title'=>$fullname,
             'email'=>$email,
-            'ngay_sinh'=>$ngay_sinh,
-            'ngay_vao'=>$ngay_vao,
-            'tinh_trang'=>$tinh_trang
+            'date_birth'=>$date_birth,
+            'date_job_receive'=>$date_job_receive,
+            'status'=>$status
         );
     array_push($nhan_vien_array['data'],$nhan_vien_item);
     }

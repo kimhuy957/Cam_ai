@@ -10,14 +10,14 @@ if ($conn->connect_error) {
 
 // Lấy dữ liệu từ form
 $mb = $_POST["ban2"];
-$ten=$_POST["ten_phong"];
+$user=$_POST["name_room"];
 // Chèn dữ liệu vào bảng "customers"
-$sql = "INSERT INTO `quanly`.`phong` 
-(`mp`, `ten_phong`,`m_ban`,`level`) 
- VALUES (NULL ,'".$ten."','".$mb."',1)";
+$sql = "INSERT INTO `cam_ai`.`room` 
+(`id`, `name_room`,`id_company`,`level`) 
+ VALUES (NULL ,'".$user."','".$mb."',1)";
 if ($conn->query($sql) === TRUE) {
     echo "Lưu thành công tên";
-    header("http://huma_new.test:8081/dist/them_phong.php");
+    header("dist/them_phong.php");
 
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error; 
@@ -25,8 +25,8 @@ if ($conn->query($sql) === TRUE) {
 
 // Gửi dữ liệu tới API
 $data = array(
-'mb'=>$mb,
-'ten_phong'=>$ten,
+'id'=>$mb,
+'ten_phong'=>$user,
 );
 
 $curl = curl_init();

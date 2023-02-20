@@ -278,18 +278,18 @@ include 'config/function.php';?>
                                     <div class="list-group list-group-form">
                                         <div class="list-group-item">
                                         <div class="form-group row align-items-center mb-0">
-                                                <label class="form-label col-form-label col-sm-3">Phòng ban </label>
+                                                <label class="form-label col-form-label col-sm-3">Phòng company </label>
                                                 <div class="col-auto">
                                                     <select name='ban1[]' multiple   data-toggle="select"
                                                     class="form-control form-control-lg" >
                                                     <?php 
-                                                        $sql=mysqli_query($conn,ban());
+                                                        $sql=mysqli_query($conn,company());
                                                         while($hien=mysqli_fetch_assoc($sql)){
-                                                            $sql1=mysqli_query($conn,phong().' where m_ban='.$hien['mb'].'');
+                                                            $sql1=mysqli_query($conn,room().' where id_company='.$hien['id'].'');
                                                             echo"
-                                                            <optgroup label=".$hien['ten_ban'].">";
+                                                            <optgroup label=".$hien['name_company'].">";
                                                             while($hien1=mysqli_fetch_assoc($sql1)){
-                                                            echo "<option value='".$hien1['mp']."'>".$hien1['ten_phong']."</option>";
+                                                            echo "<option value='".$hien1['id']."'>".$hien1['name_room']."</option>";
                                                             }
                                                             echo"
                                                             </optgroup>
@@ -307,7 +307,7 @@ include 'config/function.php';?>
                                                 <div class="col-sm-9">
                                                     <input type="text"
                                                            class="form-control"
-                                                           name="mnv"
+                                                           name="id"
                                                            placeholder="Mã Nhân Viên">
                                                 </div>
 
@@ -317,7 +317,7 @@ include 'config/function.php';?>
                                                 <div class="col-sm-9">
                                                     <input type="text"
                                                            class="form-control"
-                                                           name="ten"
+                                                           name="user"
                                                            placeholder="Tên Nhân Viên">
                                                 </div>
                                             </div>
@@ -359,7 +359,7 @@ include 'config/function.php';?>
                                             <div class="form-group row align-items-center mb-0">
                                                 <label class="form-label col-form-label col-sm-3">Vai trò công ty </label>
                                                 <div class="col-auto">
-                                                    <select name="vai_tro" id=""
+                                                    <select name="role" id=""
                                                     class="form-control custom-select">
                                                         <option value="1">Admin</option>
                                                         <option value="2">Quản lý</option>

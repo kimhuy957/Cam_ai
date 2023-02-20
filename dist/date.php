@@ -422,12 +422,12 @@ include "config/function.php";?>
                                 <tbody class="list" id="contacts">
                                     <?php
                                     $sql=mysqli_query($conn,
-                                    "SELECT l.date,l.time_di,l.time_ve,l.id_thuoc,n.tennv,p.ten_phong,l.tinh_trang FROM lich AS l
-                                    left JOIN thuoc AS t ON t.id=l.id_thuoc
-                                    LEFT JOIN phong AS p ON p.mp=t.mp
-                                    LEFT JOIN ten AS n ON n.mnv=t.mnv");
+                                    "SELECT l.date,l.time_now,l.time_out,l.id_belong,n.fullname,p.name_room,l.role FROM timekeeping AS l
+                                    left JOIN belong AS t ON t.id=l.id_belong
+                                    LEFT JOIN room AS p ON p.id=t.id_room
+                                    LEFT JOIN user AS n ON n.id=t.id_staff");
                                     while($hien=mysqli_fetch_assoc($sql)){
-                                        $logo=substr("".$hien['tennv']."",0,1);
+                                        $logo=substr("".$hien['fullname']."",0,1);
                                     echo'<tr>
 
                                         <td class="pr-0 border-right-0">
@@ -447,7 +447,7 @@ include "config/function.php";?>
                                                 </div>
                                                 <div class="media-body ml-4pt">
                                                     
-                                                        <p class="mb-0"><strong class="js-lists-values-name">'.$hien['tennv'].'</strong></p>
+                                                        <p class="mb-0"><strong class="js-lists-values-name">'.$hien['fullname'].'</strong></p>
                                                         ';
                                                         ?>
                                                     
@@ -466,8 +466,8 @@ include "config/function.php";?>
                                                 echo'
                                                 <td>
                                                 <a class="d-flex flex-column border-1 rounded bg-light px-8pt py-4pt lh-1" href="">
-                                                <small><strong class="js-lists-values-name text-black-100">'.$hien['tinh_trang'].'</strong></small>
-                                                <small class="text-black-50">'.$hien['time_di'].' - '.$hien['time_ve'].'</small>
+                                                <small><strong class="js-lists-values-name text-black-100">'.$hien['role'].'</strong></small>
+                                                <small class="text-black-50">'.$hien['time_now'].' - '.$hien['time_out'].'</small>
                                                 </a>
                                                 
                                                 </td>';

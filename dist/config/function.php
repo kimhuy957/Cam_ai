@@ -1,40 +1,41 @@
 <?php
-function ten(){
-    $sql="SELECT * from ten";
+
+function user(){
+    $sql="SELECT * from user";
     return $sql;
 }
-function phong(){
-    $sql="SELECT * from phong";
+function room(){
+    $sql="SELECT * from room";
     return $sql;
 }
-function thuoc(){
-    $sql="SELECT * from thuoc";
+function belong(){
+    $sql="SELECT * from belong";
     return $sql;
 }
-function lich(){
-    $sql="SELECT * from lich";
+function timekeeping(){
+    $sql="SELECT * from timekeeping";
     return $sql;
 }
-function ban(){
-    $sql="SELECT * from ban";
+function company(){
+    $sql="SELECT * from company";
     return $sql;
 }
 function id_thuoc(){
     include 'sql.php';
     
-    $sql_ten1=mysqli_query($conn,ten());
+    $sql_ten1=mysqli_query($conn,user());
     while($ten2=mysqli_fetch_assoc($sql_ten1)){
-        $sql_phong1=mysqli_query($conn,phong());
-        while($ten_phong1=mysqli_fetch_assoc($sql_phong1)){
-            $sql4="SELECT  phong.ten_phong ,thuoc.id from thuoc 
-            LEFT JOIN phong on phong.mp=thuoc.mp 
-            LEFT JOIN ten on ten.mnv=thuoc.mnv 
-            -- WHERE phong.mp=".$ten_phong1['mp']." AND ten.mnv=".$ten2['mnv']."
+        $sql_phong1=mysqli_query($conn,room());
+        while($name_room1=mysqli_fetch_assoc($sql_phong1)){
+            $sql4="SELECT  room.name_room ,belong.id_room from belong 
+            LEFT JOIN room on room.id=belong.id_room 
+            LEFT JOIN user on user.id=belong.id_staff
+            -- WHERE room.mp=".$name_room1['id']." AND user.id=".$ten2['id']."
             ";
             // while($thuoc1=mysqli_fetch_assoc($sql_thuoc1)){
                 $h_tp=mysqli_query($conn,$sql4);
                 while($hien_tphong=mysqli_fetch_assoc($h_tp)){
-                    echo "<a href='lich.php?id=".$hien_tphong['id']."'>".$hien_tphong['ten_phong']."</a><br>";
+                    echo "<a href='timekeeping.php?id=".$hien_tphong['id_room']."'>".$hien_tphong['name_room']."</a><br>";
                     // return $hien_tphong['id'];
                 }
             }

@@ -278,14 +278,14 @@ include 'config/function.php';?>
                                     <div class="list-group list-group-form">
                                         <div class="list-group-item">
                                         <div class="form-group row align-items-center mb-0">
-                                                <label class="form-label col-form-label col-sm-3">Phòng ban </label>
+                                                <label class="form-label col-form-label col-sm-3">Phòng company </label>
                                                 <div class="col-auto">
                                                     <select name='ban2' data-toggle="select"
                                                     class="form-control form-control-lg" >
                                                     <?php 
-                                                        $sql=mysqli_query($conn,ban());
+                                                        $sql=mysqli_query($conn,company());
                                                         while($hien=mysqli_fetch_assoc($sql)){
-                                                            echo "<option value='".$hien['mb']."'>".$hien['ten_ban']."</option>";
+                                                            echo "<option value='".$hien['id']."'>".$hien['name_company']."</option>";
                                                         }
                                                     ?>
                                                     </select>
@@ -299,7 +299,7 @@ include 'config/function.php';?>
                                                 <div class="col-sm-9">
                                                     <input type="text"
                                                            class="form-control"
-                                                           name="ten_phong"
+                                                           name="name_room"
                                                            placeholder="Nhập tên phòng ">
                                                 </div>
 

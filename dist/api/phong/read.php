@@ -2,21 +2,21 @@
     header('Acces-Control-Allow-Origin:*');
     header('Content-Type:application/json');
     include_once('../../config/db.php');
-    include_once('../../model/phong.php');
+    include_once('../../model/room.php');
 
     $db=new db();
     $connect=$db->connect();
-    $phong=new phong($connect);
-    $read=$phong->read();
+    $room=new room($connect);
+    $read=$room->read();
    if(mysqli_num_rows($read)){
     $phong_array=[];
     $phong_array['data']=[];
     while($row=mysqli_fetch_assoc($read)){
         extract($row);
         $phong_item=array(
-            'mp'=>$mp,
-            'ten_phong'=>$ten_phong,
-            'm_ban'=>$m_ban,
+            'id'=>$mp,
+            'name_room'=>$name_room,
+            'id_company'=>$id_company,
             'level'=>$level
         );
     array_push($phong_array['data'],$phong_item);

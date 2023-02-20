@@ -1,9 +1,9 @@
 <?php
-    class ban{
+    class company{
         private $conn;
 
         public $mb;
-        public $ten_ban;
+        public $name_company;
         public $level;
         
         //connect db
@@ -13,27 +13,27 @@
         }
         public function read(){
             // include_once ('../config/db.php');
-            $query="SELECT * from ban order by ten_ban desc";
+            $query="SELECT * from company order by name_company desc";
             $stmt=mysqli_query($this->conn,$query);
             return $stmt;
         }
         //show data
         public function show($mb){
             // include_once ('../config/db.php');
-            $query="SELECT * from ban where mb=$mb LIMIT 1";
+            $query="SELECT * from company where mb=$mb LIMIT 1";
             $stmt=mysqli_query($this->conn,$query);
             while($row=mysqli_fetch_assoc($stmt)){
-                $this->mb=$row['mb'];
-               $this->ten_ban=$row['ten_ban'];
+                $this->mb=$row['id'];
+               $this->name_company=$row['name_company'];
                $this->level=$row['level'];
             }
 
         }
         //create data
-        public function create($mb,$ten_ban){
-            $query="INSERT INTO `quanly`.`ban` 
-            ( `mb`,`ten_ban`,`level`) 
-            VALUES ($mb,'$ten_ban',0)";
+        public function create($mb,$name_company){
+            $query="INSERT INTO `cam_ai`.`company` 
+            ( `id`,`name_company`,`level`) 
+            VALUES ($mb,'$name_company',0)";
              $stmt = mysqli_prepare($this->conn, $query);
 
              if (mysqli_stmt_execute($stmt)) {
@@ -43,8 +43,8 @@
                  return false;
              }
         }
-        public function update($mb,$ten_ban,$level){
-            $query="UPDATE `quanly`.`ban` SET `level`='$level',`ten_ban`='$ten_ban'
+        public function update($mb,$name_company,$level){
+            $query="UPDATE `cam_ai`.`company` SET `level`='$level',`name_company`='$name_company'
             where mb=$mb";
               $stmt = mysqli_prepare($this->conn, $query);
              if(mysqli_stmt_execute($stmt)){
@@ -56,7 +56,7 @@
              }
         }
         public function delete($mb){
-            $query="DELETE FROM ban WHERE mb=$mb";
+            $query="DELETE FROM company WHERE mb=$mb";
               $stmt = mysqli_prepare($this->conn, $query);
              if(mysqli_stmt_execute($stmt)){
                 return true;

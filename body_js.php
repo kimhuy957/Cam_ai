@@ -175,17 +175,17 @@
                                     <span class="sidebar-menu-text">Tất cả</span>
                                     </a>
                                     ';
-                                    $sql2=mysqli_query($conn,"SELECT * FROM ban ORDER BY `level`");
+                                    $sql2=mysqli_query($conn,"SELECT * FROM company ORDER BY `level`");
                                     if(mysqli_num_rows($sql2)>0){
                                     while($hien=mysqli_fetch_assoc($sql2)){
                                         $k='';
                                         echo '<li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="phongban.php?mb='.$hien['mb'].'&mp=""" >';
-                                                if($hien["ten_ban"]==''){
+                                        <a class="sidebar-menu-button" href="phongban.php?mb='.$hien['id'].'&id=""" >';
+                                                if($hien["name_company"]==''){
                                                     $k="vui long thêm tên";
                                                 }
                                                 else{
-                                                    $k=$hien["ten_ban"];
+                                                    $k=$hien["name_company"];
                                                 }
                                                     echo '<span class="sidebar-menu-text">'.$k.'</span>';
                                                 echo"</a>";
@@ -228,7 +228,7 @@
                                 </a>
                                 <ul class="sidebar-submenu collapse sm-indent" id="messaging_menu">
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="them_ban.php">
+                                        <a class="sidebar-menu-button" href="themban.php">
                                             <span class="sidebar-menu-text">Thêm Ban</span>
                                         </a>
                                     </li>
@@ -243,7 +243,7 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="themChamcong.php?mb=''&mp=''">
+                                        <a class="sidebar-menu-button" href="themChamcong.php?mb=''&id=''">
                                             <span class="sidebar-menu-text">thêm Chấm Công</span>
                                         </a>
                                     </li>

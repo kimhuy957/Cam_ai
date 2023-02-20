@@ -417,10 +417,10 @@
                     <?php
                         include "config/sql.php";
                         include "config/function.php";
-                        $sql=mysqli_query($conn,"SELECT * From ten");
+                        $sql=mysqli_query($conn,"SELECT * From user");
                         $i=0;
                         while($hien=mysqli_fetch_assoc($sql)){
-                            $logo=substr("".$hien['tennv']."",0,1);
+                            $logo=substr("".$hien['fullname']."",0,1);
                                 if($i>=10){
                                     
                                 }
@@ -448,7 +448,7 @@
                                         <div class="media-body">
 
                                             <div class="d-flex flex-column">
-                                                <p class="mb-0"><strong class="js-lists-values-employee-name">'.$hien['tennv'].'</strong></p>
+                                                <p class="mb-0"><strong class="js-lists-values-employee-name">'.$hien['fullname'].'</strong></p>
                                                 <small class="js-lists-values-employee-email text-50">'.$hien['email'].'</small>
                                             </div>
 
@@ -459,33 +459,33 @@
 
                                 <td>
                                     <div class="d-flex align-items-center">
-                                           <span class="js-lists-values-employer-name text-70">'.$hien['ngay_sinh'].'</span>
+                                           <span class="js-lists-values-employer-name text-70">'.$hien['date_birth'].'</span>
                                     </div>
                                 </td>
 
-                                <td class="text-center js-lists-values-projects small text-70">'.$hien['ngay_vao'].'</td>
+                                <td class="text-center js-lists-values-projects small text-70">'.$hien['date_job_receive'].'</td>
 
                                 <td>
 
                                     <a href=""
-                                       class="chip chip-outline-secondary">'.$hien['vai_tro'].'</a>
+                                       class="chip chip-outline-secondary">'.$hien['role'].'</a>
 
                                 </td>
                                 <td>
                                 <div class="text-center js-lists-values-projects small text-70">';
-                                    if(ucwords($hien['tinh_trang'])=="Đang Làm"){
+                                    if(ucwords($hien['status'])=="Đang Làm"){
                                         echo '
-                                        <span style="color:green">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:green">'.$hien['status'].'</span>
                                         ';
                                     }
-                                    elseif(ucwords($hien['tinh_trang'])=="Đã Nghỉ"){
+                                    elseif(ucwords($hien['status'])=="Đã Nghỉ"){
                                         echo '
-                                        <span style="color:red;">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:red;">'.$hien['status'].'</span>
                                         ';
                                     }
                                     else{
                                         echo '
-                                        <span style="color:blue;">'.$hien['tinh_trang'].'</span>
+                                        <span style="color:blue;">'.$hien['status'].'</span>
                                         ';
                                     }
                            echo'</div></td>
