@@ -2,7 +2,7 @@
     class room{
         private $conn;
 
-        public $mp;
+        public $id;
         public $name_room;
         public $id_company;
         public $level;
@@ -13,17 +13,17 @@
         }
         public function read(){
             // include_once ('../config/db.php');
-            $query="SELECT * from room order by mp desc";
+            $query="SELECT * from room order by id desc";
             $stmt=mysqli_query($this->conn,$query);
             return $stmt;
         }
         //show data
         public function show($id){
             // include_once ('../config/db.php');
-            $query="SELECT * from room where mp=$id LIMIT 1";
+            $query="SELECT * from room where id=$id LIMIT 1";
             $stmt=mysqli_query($this->conn,$query);
             while($row=mysqli_fetch_assoc($stmt)){
-                $this->mp=$row['id'];
+                $this->id=$row['id'];
                 $this->name_room=$row['name_room'];
                $this->id_company=$row['id_company'];
                $this->level=$row['level'];
@@ -31,10 +31,10 @@
 
         }
         //create data
-        public function create($mp,$name_room,$id_company,$level){
+        public function create($id,$name_room,$id_company,$level){
             $query="INSERT INTO `cam_ai`.`room` 
             (`id`, `name_room`,`id_company`,`level`) 
-            VALUES ('$mp','$name_room',$id_company,$level)";
+            VALUES ('$id','$name_room','$id_company','$level')";
               $stmt = mysqli_prepare($this->conn, $query);
             // mysqli_stmt_bind_param($stmt, "sis", $name, $age, $id_company);
             
@@ -46,9 +46,9 @@
                 return false;
              }
         }
-        public function update($mp,$name_room,$id_company,$level){
+        public function update($id,$name_room,$id_company,$level){
             $query="UPDATE `cam_ai`.`room` SET `name_room`='$name_room',`id_company`=$id_company,`level`=$level
-            where mp=$mp";
+            where id=$id";
               $stmt = mysqli_prepare($this->conn, $query);
             // mysqli_stmt_bind_param($stmt, "sis", $name, $age, $id_company);
             
@@ -60,9 +60,9 @@
                 return false;
              }
         }
-        public function delete($mp){
-            // $query1="DELETE FROM belong WHERE mp='$mp'";
-            $query1="SELECT * from belong where id_room=$mp";
+        public function delete($id){
+            // $query1="DELETE FROM belong WHERE mp='$id'";
+            $query1="SELECT * from belong where id_room=$id";
             
             $sql=mysqli_query($this->conn,$query1);
             
@@ -82,7 +82,7 @@
                 var_dump($sql3);
                 mysqli_query($this->conn,$sql3);
             }}
-            $query="DELETE FROM room WHERE `id`='$mp'";
+            $query="DELETE FROM room WHERE `id`='$id'";
             $stmt = mysqli_prepare($this->conn, $query);
             // mysqli_stmt_bind_param($stmt, "sis", $name, $age, $id_company);
             if(mysqli_stmt_execute($stmt)){

@@ -10,10 +10,10 @@ $db=new db();
 $connect=$db->connect();
 $company=new company($connect);
 $data=json_decode(file_get_contents("php://input"));
-$company->mb=$data->mb;
+$company->id=$data->id;
 $company->name_company=$data->name_company;
 $company->level=$data->level;
-if($company->update($data->mb,$data->name_company,$data->level)){
+if($company->update($data->id,$data->name_company,$data->level)){
     echo json_encode(array('message','Question Update'));
 }
 else{

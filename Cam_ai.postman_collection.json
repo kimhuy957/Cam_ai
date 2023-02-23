@@ -19,13 +19,13 @@
 									"name": "ban",
 									"item": [
 										{
-											"name": "create.php",
+											"name": "create",
 											"request": {
 												"method": "POST",
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n   \"mb\":7,\r\n    \"ten_ban\":\"nhap7\"\r\n}",
+													"raw": "{\r\n    \"id\":\"6\",\r\n    \"name_company\":\"Doppel herz\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -43,7 +43,8 @@
 														"ban",
 														"create.php"
 													]
-												}
+												},
+												"description": "StartFragment\n\nEndFragment\n\n  \n  \n\n| \"id\":\"6\" | **int (Mã ban)** |\n| --- | --- |\n|  \"name_company\":\"Doppel herz\" | String (tên phòng ban ) |"
 											},
 											"response": []
 										},
@@ -54,7 +55,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"mb\":\"7\"//nhập int\r\n}",
+													"raw": "{\r\n    \"id\":\"6\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -72,7 +73,8 @@
 														"ban",
 														"delete.php"
 													]
-												}
+												},
+												"description": "| \"id\":\"6\" | **int (Mã số ban muốn xóa)** |\n| --- | --- |"
 											},
 											"response": []
 										},
@@ -129,7 +131,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"mb\":20,\r\n    \"ten_ban\":\"kinh doang\",\r\n    \"level\":\"1\"\r\n}",
+													"raw": "{\r\n    \"id\":\"7\",\r\n    \"name_company\":\"Thái Hưng\",\r\n    \"level\":\"0\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -147,7 +149,8 @@
 														"ban",
 														"update.php"
 													]
-												}
+												},
+												"description": "| **id** | **int (Mã ban muốn sửa)** |\n| --- | --- |\n| name_company | String (tên phòng ban muốn sửa) |\n| level | int cấp của phòng ban |\n\nlevel sẽ đi từ cấp (0-2) 0: ban ,1: phòng,2 tổ nhưng hiện tai chưa cập nhật"
 											},
 											"response": []
 										}
@@ -186,7 +189,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"id\":\"8\",\r\n    \"fullname\":\"Nguyễn ra vậy\",\r\n    \"email\":\"vay2gmail\",\r\n    \"date_birth\":\"2002-02-03\",\r\n    \"date_job_receive\":\"2022-12-02\",\r\n    \"status\":\"Đang làm\",\r\n    \"role\":\"Nhân Viên\"\r\n\r\n}",
+													"raw": "{\r\n    \"id\":\"9\",\r\n    \"fullname\":\"Nguyễn Văn A\",\r\n    \"email\":\"vanA@gmail.com\",\r\n    \"date_birth\":\"2003-05-31\",\r\n    \"date_job_receive\":\"2022-04-21\",\r\n    \"status\":\"Đang làm\",\r\n    \"role\":\"Admin\"\r\n\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -205,7 +208,7 @@
 														"create.php"
 													]
 												},
-												"description": "StartFragment\n\n{    \"id\":\"232312312\",   định dạng int key cảu bảng\n\n \"fullname\":\"Nguyễn ra vậy\",  Strinng tên cuae nhân viên\n\n  \"email\":\"vay2gmail\",   String email cảu nhân viên input loại email\n\n \"date_birth\":\"2002-02-03\",   date YYYY-MM-DD ngày sinh của nhân viên\n\n \"date_job_receive\":\"2022-12-02\",    date YYYY-MM-DD ngày vào công ty\n\n\"status\":\"Đang làm\",    String tình trạng hiện tại cảu nhân viên này (nghỉ làm ,đang làm ,nghỉ bệnh )\n\n\"role\":\"Nhân Viên\"( String chức vụ của nhân viên {Admin, quản lý , nhân viên})\n\nEndFragment\n\n  \n  \n  \n}\n\nEndFragment"
+												"description": "| **id:9** | int (mã nhân viên) |\n| --- | --- |\n| fullname:\"Họ và Tên\" | String (Họ và tên nhân viên) |\n| email:\"sda@dsad\" | String (địa chỉ của gamil nhân viên có kí tự @) |\n| date_birth:\"2002-21-02\" | date YYYY-mm-dd (ngày sinh nhân viên ) |\n| date_job_receive:\"2002-21-02\" | date YYYY-mm-dd (ngày nhân viên vào công ty nhân viên ) |\n| status:\"Đang làm\" | String (tình trạng của nhân viên hiện tại ) |\n| role:\"nhân viên\" | String (chức vụ của nhân viên ) |\n\nstatus:ghi lại tình hình của nhân viên{đang làm , đã nghỉ ,...}\n\nrole: cách chức vụ có thể chọn {Admin, quản lý , nhân viên}\n\nEndFragmen"
 											},
 											"response": []
 										},
@@ -243,7 +246,8 @@
 															"value": null
 														}
 													]
-												}
+												},
+												"description": "| **id=\"9\"** | **int (mã nhân viên muốn xóa)** |\n| --- | --- |"
 											},
 											"response": []
 										},
@@ -317,7 +321,8 @@
 															"description": "int (mã nhân viên muốn xem thông tin đã xem )"
 														}
 													]
-												}
+												},
+												"description": "| **id=\"9\"** | **int trên url get(thông tin in trong sql của nhân viên có id)** |\n| --- | --- |"
 											},
 											"response": []
 										},
@@ -327,13 +332,51 @@
 												"method": "PUT",
 												"header": [],
 												"body": {
-													"mode": "raw",
-													"raw": "{\r\n\"id\": 8,\r\n\"fullname\":\"Nguyễn văn vậy\",\r\n\"email\":\"ngva@gmial.com\",\r\n\"date_birth\":\"2002-12-12\",\r\n\"date_job_receive\":\"2022-12-11\",\r\n\"status\":\"Đã Nghỉ\",\r\n\"role\":\"Nhân Viên\"\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "id",
+															"value": "",
+															"description": "int (nhân viên có mã id muốn sửa đổi thông tin)",
+															"type": "text"
+														},
+														{
+															"key": "fullname",
+															"value": "",
+															"description": "String(tên nhân viên muốn sửa thành)",
+															"type": "text"
+														},
+														{
+															"key": "email",
+															"value": "",
+															"description": "String(email nhân viên muốn sửa thành có kí tự @)",
+															"type": "text"
+														},
+														{
+															"key": "date_birth",
+															"value": "",
+															"description": "YYYY-MM-DD(ngáy sinh nhật nhân viên muốn sửa)",
+															"type": "text"
+														},
+														{
+															"key": "date_job_receive",
+															"value": "",
+															"description": "YYYY-MM-DD(ngáy vào công ty nhân viên muốn sửa)",
+															"type": "text"
+														},
+														{
+															"key": "status",
+															"value": "",
+															"description": "String (sửa tính trạng hiện tại cảu nhân viên)",
+															"type": "text"
+														},
+														{
+															"key": "role",
+															"value": "",
+															"description": "\tString (sửa chức vụ của nhân viên hiện tại {Admin, quản lý , nhân viên})",
+															"type": "text"
 														}
-													}
+													]
 												},
 												"url": {
 													"raw": "{{url}}/dist/api/nhan_vien/update.php",
@@ -346,7 +389,8 @@
 														"nhan_vien",
 														"update.php"
 													]
-												}
+												},
+												"description": "| **id=\"8\"** | **int (nhân viên có mã id muốn sửa đổi thông tin)** |\n| --- | --- |\n| \"fullname\":\"Nguyễn văn vậy\" | String(tên nhân viên muốn sửa thành) |\n| \"email\":\"[ngva@gmial.com](mailto:ngva@gmial.com)\" | String(email nhân viên muốn sửa thành có kí tự @) |\n| \"date_birth\":\"2002-12-12\" | YYYY-MM-DD(ngáy sinh nhật nhân viên muốn sửa) |\n| \"date_job_receive\":\"2022-12-11\" | YYYY-MM-DD(ngáy vào công ty nhân viên muốn sửa) |\n| \"status\":\"Đã Nghỉ\" | String (sửa tính trạng hiện tại cảu nhân viên) |\n| \"role\":\"Nhân Viên\" | String (sửa chức vụ của nhân viên hiện tại {Admin, quản lý , nhân viên}) |"
 											},
 											"response": []
 										}
@@ -362,7 +406,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"mp\":1,\r\n    \"ten_phong\":\"phòng nhân sự\",\r\n    \"m_ban\":\"2\",\r\n    \"level\":1\r\n}",
+													"raw": "{\r\n    \"id\":\"2\",\r\n    \"name_room\":\"thực tập sinh\",\r\n    \"id_company\":\"25\",\r\n    \"level\":\"1\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -381,7 +425,7 @@
 														"create.php"
 													]
 												},
-												"description": "StartFragment\n\n{    \"id\":\"1\",    (int mã của phòng )\n\n\"name_room\":\"âsasas\",    (String tên phong)\n\n\"id_company\":\"12\"(int mã liên kết vói company)\n\nEndFragme)\n\n}\n\nEndFragment"
+												"description": "| **id=\"4\"** | int (mã phòng ) |\n| --- | --- |\n| name_room=\"thực tập\" | String (tên của phòng ) |\n| id_company=\"2\" | int (đươc liên kết với id của company) |\n| level | int =1 (để xác định để đổi chức vụ sau này) |"
 											},
 											"response": []
 										},
@@ -392,7 +436,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"mp\":11\r\n}",
+													"raw": "{\r\n    \"id\":\"33\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -410,7 +454,8 @@
 														"phong",
 														"delete.php"
 													]
-												}
+												},
+												"description": "| **id:\"33\"** | int (mã phòng muốn xóa) |\n| --- | --- |"
 											},
 											"response": []
 										},
@@ -453,10 +498,12 @@
 													"query": [
 														{
 															"key": "id",
-															"value": "1"
+															"value": "1",
+															"description": "int (mã phòng muốn xem)"
 														}
 													]
-												}
+												},
+												"description": "StartFragment\n\n| **id=\"9\"** | **int trên url get(thông tin in trong sql của phòng có id)** |\n| --- | --- |\n\nEndFragment"
 											},
 											"response": []
 										},
@@ -467,7 +514,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"mp\":\"32\",\r\n    \"ten_phong\":\"phòng hành trính\",\r\n    \"m_ban\":\"1\",\r\n    \"level\":\"1\"\r\n}",
+													"raw": "{\r\n    \"id\":\"2\",\r\n    \"name_room\":\"phòng thực tập it\",\r\n    \"id_company\":\"24\",\r\n    \"level\":\"1\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -485,7 +532,8 @@
 														"phong",
 														"update.php"
 													]
-												}
+												},
+												"description": "| \"id\":\"2\" | **int (mã phòng muốn thay đổi thông tin )** |\n| --- | --- |\n| \"name_room\":\"phòng thực tập it\", | String (tên phòng muốn thay đổi ) |\n| \"id_company\":\"24\", | int (mã ban muồn tháy dổi ) |\n| \"level\":\"1\" | int (cấp hiệp tại) |\n\nStartFragment\n\nlevel sẽ đi từ cấp (0-2) 0: ban ,1: phòng,2 tổ nhưng hiện tai chưa cập nhật\n\nEndFragment"
 											},
 											"response": []
 										}
@@ -531,7 +579,7 @@
 														"create.php"
 													]
 												},
-												"description": "{ \"date\":\"2023-02 18\", date YYYY-MM-DD(thơi gian hôm chấm công)\n\n\"time_now\":\"08:00\", Time HH:ii (giờ và phút lúc đến của nhân viên)\n\n\"time_out\":\"17:00\", Time HH:ii (giờ phút lúc về của nhân viên)\n\n\"role\":\"đi đúng h\", String (Nội dung đến đúng giớ , muộn ,nghỉ )\n\n\"id_belong\":\"13\"(int liên kết vói các bảng belong để phân ra nhân viên và phong )"
+												"description": "| date:\"2023-02 18\" | date YYYY-MM-DD(thơi gian hôm chấm công) |\n| --- | --- |\n| time_now:\"08:00\" | Time HH:ii (giờ và phút lúc đến của nhân viên) |\n| time_out:\"17:00\" | Time HH:ii (giờ phút lúc về của nhân viên) |\n| \"role\":\"đi đúng giờ\" | String (Nội dung đến đúng giớ , muộn ,nghỉ ) |\n| id_belong:\"13\" | (int liên kết vói các bảng belong để phân ra nhân viên và phong ) |"
 											},
 											"response": []
 										},
@@ -561,7 +609,8 @@
 														"Cam_cong",
 														"delete.php"
 													]
-												}
+												},
+												"description": "| **id=39** | **int (đươc lưu trong bảng timekeeping muốn xóa)** |\n| --- | --- |\n|  |  |"
 											},
 											"response": []
 										},
@@ -607,7 +656,8 @@
 															"value": "3"
 														}
 													]
-												}
+												},
+												"description": "StartFragment\n\n| **id=\"9\"** | **int trên url get(thông tin in trong sql của timekeeping có id)** |\n| --- | --- |\n\nEndFragment"
 											},
 											"response": []
 										},
@@ -648,7 +698,7 @@
 														"update.php"
 													]
 												},
-												"description": "id :iny mã của bảng timetkeeping key\n\n\"date\":\"2023-02 18\", date YYYY-MM- DD(thơi gian hôm chấm công)\n\n\"time_now\":\"08:00\", Time HH:ii (giờ và phút lúc đến của nhân viên)\n\n\"time_out\":\"17:00\", Time HH:ii (giờ phút lúc về của nhân viên)\n\n\"role\":\"đi đúng h\", String (Nội dung đến đúng giớ , muộn ,nghỉ )\n\n\"id_belong\":\"13\"(int liên kết vói các bảng belong để phân ra nhân viên và phong )"
+												"description": "| id:\"11\" | int (mã của cấm công của muốn sửa) |\n| --- | --- |\n| date:\"2023-02 18\" | date YYYY-MM-DD(thơi gian hôm chấm công muốn sửa) |\n| time_now:\"08:00\" | Time HH:ii (giờ và phút lúc đến của nhân viên muốn sửa) |\n| time_out:\"17:00\" | Time HH:ii (giờ phút lúc về của nhân viên muốn sửa) |\n| \"role\":\"đi đúng giờ\" | String (Nội dung đến đúng giớ , muộn ,nghỉ muốn sửa) |\n| id_belong:\"13\" | (int liên kết vói các bảng belong để phân ra nhân viên và phong muốn sửa) |\n\nid_belong: được liên kết vời bảng belong bảng bay được kêt hợp với bảng user nhân viên và room các phòng"
 											},
 											"response": []
 										}
@@ -712,7 +762,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{   \r\n    \"date\":\"2023-02-18\",\r\n    \"time_now\":\"08:00\",\r\n    \"time_out\":\"17:00\",\r\n    \"role\":\"đi đúng h\",\r\n    \"id_belong\":\"13\"\r\n}",
+													"raw": "{   \r\n    \"id_staff\":\"3\",\r\n    \"id_room\":\"8\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -720,18 +770,18 @@
 													}
 												},
 												"url": {
-													"raw": "{{url}}/dist/api/Cam_cong/create.php",
+													"raw": "{{url}}/dist/api/thuoc/create.php",
 													"host": [
 														"{{url}}"
 													],
 													"path": [
 														"dist",
 														"api",
-														"Cam_cong",
+														"thuoc",
 														"create.php"
 													]
 												},
-												"description": "{\n\nStartFragment\n\nid_staff: int liện kết vơi với bảng user\n\nEndFragment\n\nid_room: int liện kết vơi với bảng room\n\nEndFragment\n\nEndFr}"
+												"description": "| \"id_staff\":\"1\" | **int (được liên kết với bảng user của nhân viên)** |\n| --- | --- |\n| \"id_room\":\"12\" | int **(được liên kết với bảng room của phong)** |"
 											},
 											"response": []
 										},
@@ -761,7 +811,8 @@
 														"Cam_cong",
 														"delete.php"
 													]
-												}
+												},
+												"description": "StartFragment\n\n| **id=39** | **int (đươc lưu trong bảng timekeeping muốn xóa)** |\n| --- | --- |\n\nEndFragment"
 											},
 											"response": []
 										},
@@ -807,7 +858,8 @@
 															"value": "3"
 														}
 													]
-												}
+												},
+												"description": "StartFragment\n\n| **id=\"9\"** | **int trên url get(thông tin in trong sql của belong có id** |\n| --- | --- |\n\nEndFragment"
 											},
 											"response": []
 										},
@@ -829,7 +881,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"id\":11,\r\n    \"date\":\"2023-02-18\",\r\n    \"time_now\":\"08:00\",\r\n    \"time_out\":\"17:00\",\r\n    \"role\":\"đi đúng h\",\r\n    \"id_belong\":\"13\"\r\n\r\n}",
+													"raw": "{\r\n    \"id\":\"28\",\r\n    \"id_staff\":\"7\",\r\n    \"id_room\":\"8\"\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -837,17 +889,18 @@
 													}
 												},
 												"url": {
-													"raw": "{{url}}/dist/api/Cam_cong/update.php",
+													"raw": "{{url}}/dist/api/thuoc/update.php",
 													"host": [
 														"{{url}}"
 													],
 													"path": [
 														"dist",
 														"api",
-														"Cam_cong",
+														"thuoc",
 														"update.php"
 													]
-												}
+												},
+												"description": "StartFragment\n\n| id=\"28\" | int (mã id muốn thay đổi trong bảng belong) |\n| --- | --- |\n| \"id_staff\":\"7\" | **int (được liên kết với bảng user của nhân viên)** |\n| \"id_room\":\"8\" | int **(được liên kết với bảng room của phong)** |\n\nEndFragment"
 											},
 											"response": []
 										}

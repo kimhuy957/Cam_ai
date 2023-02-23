@@ -33,7 +33,7 @@
         public function create($id_staff,$id_room){
             $query="INSERT INTO `cam_ai`.`belong` 
             ( `id`,`id_staff`,`id_room`) 
-            VALUES (null,$id_staff,$id_room)";
+            VALUES (null,'$id_staff','$id_room')";
               $stmt = mysqli_prepare($this->conn, $query);
             // mysqli_stmt_bind_param($stmt, "sis", $name, $age, $mp);
             

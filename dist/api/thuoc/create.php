@@ -14,7 +14,7 @@ $data=json_decode(file_get_contents("php://input"));
 // $belong->id=$data->id;
 $belong->id_staff=$data->id_staff;
 $belong->id_room=$data->id_room;
-if($belong->create($data->id_staff,$id->id_room)){
+if($belong->create($data->id_staff,$data->id_room)){
     echo json_encode(array('message','Question Created'));
 }
 else{

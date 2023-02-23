@@ -13,7 +13,7 @@ $data=json_decode(file_get_contents("php://input"));
 $belong->id=$data->id;
 $belong->id_room=$data->id_room;
 $belong->id_staff=$data->id_staff;
-if($belong->update($data->id,$data->id_room,$data->id_staff)){
+if($belong->update($data->id,$data->id_staff,$data->id_room)){
     echo json_encode(array('message','Question Update'));
 }
 else{

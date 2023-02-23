@@ -11,9 +11,9 @@ $db=new db();
 $connect=$db->connect();
 $room=new room($connect);
 $data=json_decode(file_get_contents("php://input"));
-$room->mp=$data->mp;
+$room->id=$data->id;
 
-if($room->delete($data->mp)){
+if($room->delete($data->id)){
     echo json_encode(array('message','Question DELETE'));
 }
 else{

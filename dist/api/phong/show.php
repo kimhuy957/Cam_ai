@@ -10,7 +10,7 @@
     $room->show($_GET['id']);
     $phong_item=array(
 
-            'id'=>$room->mp,
+            'id'=>$room->id,
             'name_room'=>$room->name_room,
             'id_company'=>$room->id_company,
             'level'=>$room->level

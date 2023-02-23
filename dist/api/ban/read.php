@@ -14,7 +14,7 @@
     while($row=mysqli_fetch_assoc($read)){
         extract($row);
         $ban_item=array(
-            'id'=>$mb,
+            'id'=>$id,
             'name_company'=>$name_company,
             'level'=>$level
         );

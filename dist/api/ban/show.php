@@ -10,7 +10,7 @@
     $company->show($_GET['id']);
     $ban_item=array(
 
-            'id'=>$company->mb,
+            'id'=>$company->id,
             'name_company'=>$company->name_company,
             'level'=>$company->level
     );

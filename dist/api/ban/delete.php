@@ -10,8 +10,8 @@ $db=new db();
 $connect=$db->connect();
 $company=new company($connect);
 $data=json_decode(file_get_contents("php://input"));
-$company->mb=$data->mb;
-if($company->delete($data->mb)){
+$company->id=$data->id;
+if($company->delete($data->id)){
     echo json_encode(array('message','Question DELETE'));
 }
 else{
